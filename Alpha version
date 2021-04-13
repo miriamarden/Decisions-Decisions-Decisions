@@ -3,15 +3,15 @@ descriptive = 0
 normative = 0
 
 print('Hi! Welcome to "Decisions, Decisions, Decisions," a choose-your-own-adventure game that will take you through the semester of a Brown student.')
-user_name = input('What's your name?')
+user_name = input('Whats your name?')
 print('Nice to meet you', user_name)
 
 #Choice 1: Immune Neglect
 print()
-print ('Alex, your partner of 4 years, the love of your life, just broke up with you right before your flight to Brown for your first semester of university - they said they can’t do long distance.')
-print('You are pursuing a double major, so it would be wise of you to start the heavy lifting from early.  However, you are heartbroken and unsure of your ability to offer your best work. Do you…')
+print ('Alex, your partner of 4 years, the love of your life, just broke up with you right before your flight to Brown for your first semester of university they said they cant do long distance.')
+print('You are pursuing a double major, so it would be wise of you to start the heavy lifting from early. However, you are heartbroken and unsure of your ability to offer your best work. Do you:')
 print('A: Take 2 easy courses and 2 hard courses, to prevent yourself from having a mental breakdown mid semester')
-print('B: Take 3 hard requirements and 1 easy course – you’re a soldier!')
+print('B: Take 3 hard requirements and 1 easy course your"e a soldier!')
 
 choice1 = input('Type "A" or "B" to make your choice:')
 
@@ -23,7 +23,7 @@ elif choice1 == 'B':
 #Choice 2: Anchoring
 print()
 print('You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new Brown hoodies.')
-print('Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cite hoodie from last year for $80. Do you…')
+print('Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cite hoodie from last year for $80. Do you')
 print('A: Buy the $80 hoodie')
 print('B: Buy the $100 hoodie')
 print('C: Leave the store without buying anything')
@@ -38,7 +38,7 @@ elif choice2 == 'C':
 #Choice 3: Framing
 print()
 print('You are happily seated in your first class of the semester. You read the course description and reviews and it seems super interesting.')
-print('The teacher walks in and hands out the syllabus – it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management.')
+print('The teacher walks in and hands out the syllabus, it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management.')
 print('She further articulates that 65% of students tend to get a final grade below an A. Do you take the class S/NC or for a grade?')
 
 choice3 = input('Type "S/NC" or "grade" to make your choice:')
@@ -50,7 +50,7 @@ elif choice3 == 'grade':
 
 #Choice 4: Sunk Cost Fallacy
 print()
-print('You grudgingly head to your APMA class. You realize that you no longer have any interest in the material, nor do you have any need for this class; in fact, you really don’t like the class.')
+print('You grudgingly head to your APMA class. You realize that you no longer have any interest in the material, nor do you have any need for this class; in fact, you really don"t like the class.')
 print('You can drop the class with no fee, but you have already invested 75+ hours of work into the class (5 weeks of work), and you spent $65 on the textbook. Do you drop the class or stay in the class?')
 
 choice4 = input('Type "drop" or "stay" to make your choice:')
@@ -62,9 +62,9 @@ elif choice4 == 'stay':
 
 #Choice 5: Progress Bias
 print()
-print('It’s midterm season and you have become a coffee fiend. Sleep deprivation is so expensive! You realized a few weeks ago that you went to Starbucks five times in one week. Yikes.')
+print('It"s midterm season and you have become a coffee fiend. Sleep deprivation is so expensive! You realized a few weeks ago that you went to Starbucks five times in one week. Yikes.')
 print('To not go broke, you made a goal to only go a maximum of twice a week, which you followed perfectly last week.')
-print('It’s friday, you finished your last exam, and your friends want to grab Starbucks and sit in the sun. But you already went twice this week. Do you...')
+print('It"s friday, you finished your last exam, and your friends want to grab Starbucks and sit in the sun. But you already went twice this week. Do you...')
 print('A: Just go an extra time this week, I mean you met your goal last week anyway.')
 print('B: Stick to your goal and keep your spending down. Water is pretty good too.')
 
@@ -77,7 +77,7 @@ elif choice5 == 'B':
 
 #Choice 6: Endowment Effect
 print()
-print('It’s dinner time! Unfortunately, you do not have any meal swipes or flex points, but you are really hungry and you are craving a pasta bowl from Andrews.')
+print('It"s dinner time! Unfortunately, you do not have any meal swipes or flex points, but you are really hungry and you are craving a pasta bowl from Andrews.')
 print('You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.')
 print('They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?')
 
@@ -90,9 +90,9 @@ elif choice6 == 'No':
 
 #Choice 7: Availability Heuristic
 print()
-print('You’re on your way to a late night grind in the stacks at the SciLi. You run into your friend outside of Caswell and talk for a bit.')
+print('You"re on your way to a late night grind in the stacks at the SciLi. You run into your friend outside of Caswell and talk for a bit.')
 print('You both end up complaining about how dusty and depressing some of the scili is. They tell you that the last time they were in the stacks, someone there saw a mouse. Gross.')
-print('But you’re already so close to the SciLi….. Do you decide to go to the sci li since you’re already so close and all stacks are rightfully terrible, or do you go to the Rock stacks (mice are nasty!)?')
+print('But you"re already so close to the SciLi. Do you decide to go to the sci li since you"re already so close and all stacks are rightfully terrible, or do you go to the Rock stacks (mice are nasty!)?')
 
 choice7 = input('Type "SciLi" or "Rock" to make your choice:')
 
@@ -133,3 +133,4 @@ if normative>descriptive:
     print('You are a rational decision-maker, and the majority of your choices align with  normative decision theories')
 elif descriptive>normative:
     print('You are a nonrational decision-maker, and the majority of your choices align with descriptive decision theories')
+
