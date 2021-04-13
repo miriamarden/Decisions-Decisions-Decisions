@@ -3,7 +3,7 @@ descriptive = 0
 normative = 0
 
 print('Hi! Welcome to "Decisions, Decisions, Decisions," a choose-your-own-adventure game that will take you through the semester of a Brown student.')
-user_name = input('What's your name?')
+user_name = input('What is your name?')
 print('Nice to meet you', user_name)
 
 #Choice 1: Immune Neglect
