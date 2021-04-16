@@ -138,7 +138,7 @@ if choice1 == 'A':
                     if choice20 == 'first internship':
                         descriptive += 1
                         print('You brag to your friends about how you are a shoe-in for the internship you applied to and they become spiteful and never speak to you again. You are lonely forever')
-                    else:
+                else:
                         normative +=1
                         print('A few weeks later you are notified that you got the internship! All of your career dreams come true.')
 
