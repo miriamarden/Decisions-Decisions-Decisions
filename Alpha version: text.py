@@ -81,7 +81,7 @@ if choice1 == 'A':
                     print('You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. But, on the bright side, we found out what kind of decision-maker you are!')
                     pygame.mixer.Sound.play(horn_fail_sound)
         elif choice3A == 'C':  # don't buy hoodie
-            #Background: class
+            #Background:class
             normative += 1
             print('You’re making responsible decisions today! You decide to keep this up and head to your next class. \nYou read the course description and reviews and it seemed super interesting. The teacher walks in and hands out the syllabus – it looks manageable. \nProf then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. \nDo you decide to take the class S/NC or take it for a grade?')
             choice8A = input('Type "S/NC" or "grade" to make your choice:')
