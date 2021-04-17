@@ -2,6 +2,21 @@
 descriptive = 0
 normative = 0
 
+#SOUND CODE
+horn_fail_sound = pygame.mixer.Sound("horn_fail_lose.wav")
+yay_sound = pygame.mixer.Sound("yay_sound.wav")
+tada_sound = pygame.mixer.Sound("tada_sound.wav")
+bear_song = pygame.mixer.music.load("bear_song.wav")
+
+#in game loop
+pygame.mixer.music.play(-1)
+
+#at the end of each segment
+pygame.mixer.Sound.play(yay_sound) #or
+pygame.mixer.Sound.play(horn_fail_sound) #or
+pygame.mixer.Sound.play(tada_sound)
+
+
 print('Hi! Welcome to "Decisions, Decisions, Decisions," a choose-your-own-adventure game that will take you through the semester of a Brown student.')
 user_name = input('Whats your name?')
 print('Nice to meet you', user_name)
