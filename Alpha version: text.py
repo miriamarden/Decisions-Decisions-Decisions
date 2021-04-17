@@ -1,3 +1,12 @@
+#SOUND CODE
+horn_fail_sound = pygame.mixer.Sound("horn_fail_lose.wav")
+yay_sound = pygame.mixer.Sound("yay_sound.wav")
+tada_sound = pygame.mixer.Sound("tada_sound.wav")
+bear_song = pygame.mixer.music.load("bear_song.wav")
+
+#in game loop
+pygame.mixer.music.play(-1)
+
 #Initialize variables
 descriptive = 0
 normative = 0
@@ -38,6 +47,7 @@ if choice1 == 'A':
                 if choice5A == 'SciLi':
                     normative += 1
                     print('The mice of SciLi have made you their king/queen! You decide you no longer have use for education. More good news: we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(tada_sound)
                 elif choice5A == 'Rock':
                     descriptive += 1
                     print('After a bit of studying at the Rock you decide you deserve to hang out with some friends. You and your friends decide to hang out in Emwool. \nBut, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:')
@@ -47,18 +57,22 @@ if choice1 == 'A':
                     if choice6A== 'A':
                         normative += 1
                         print('You and your friends laugh yourselves into a semester long coma - literally. But, on the bright side, we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(yay_sound)
                     elif choice6A == 'B':
                         descriptive += 1
                         print('On the way to Emwool you trip over someone’s illegal pet snake and it eats you. But, on the bright side, we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(horn_fail_sound)
             elif choice4A == 'nap':  # take nap instead of flex
                 print('You just had the snuggliest nap of your life. Now you have the post nap munchies. You are not on meal plan this year, but you are craving a pasta bowl from Andrews. \nYou pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. \nIt looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.\nThey offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?')
                 choice7A = input('Type "yes" or "no" to make your choice:')
                 if choice7A == 'yes':
                     normative += 1
                     print('A blizzard hits PVD and you have no pasta so you starve to death in your dorm. But, on the bright side, we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice7A == 'no':
                     descriptive += 1
                     print('You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. But, on the bright side, we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(horn_fail_sound)
         elif choice3A == 'C':  # don't buy hoodie
             normative += 1
             print('You’re making responsible decisions today! You decide to keep this up and head to your next class. \nYou read the course description and reviews and it seemed super interesting. The teacher walks in and hands out the syllabus – it looks manageable. \nProf then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. \nDo you decide to take the class S/NC or take it for a grade?')
@@ -70,9 +84,11 @@ if choice1 == 'A':
                 if choice9A == 'yes':
                     descriptive += 1
                     print('You have a caffeine overload and pass out in Starbucks. Brown ships you back to your home state/country because they do not condone drug addiction on campus! But, on the bright side, we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice9A == 'no':
                     normative +=1
                     print('You drop out of school and become an ambassador for self control and overcoming drug addiction. Your success is overwhelming. Plus, more good news: we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(yay_sound)
             elif choice8A == 'grade': #take class for grade
                 normative +=1
                 print('You are proud of your courage and decide to treat yourself with an adventure. Are you going to the roller rink or the movie theatre?')
@@ -80,8 +96,10 @@ if choice1 == 'A':
                 if choice10A == 'roller rink':
                     #neither normative nor descriptive
                     print('You fall and somebody skates over your face, mangling it horribly, so you drop out of school and join the circus. But, on the bright side, we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice10A == 'movies':
                     print('The movie inspires you and helps you discover your true purpose in life - you dropout of school to become a country music star. Plus, we found out what kind of decision-maker you are')
+                    pygame.mixer.Sound.play(tada_sound)
     elif choice2A == 'food': #food instead of retail therapy
         #neither normative nor descriptive
         print('Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. \nYou pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. \nIt looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.\nThey offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?')
@@ -100,9 +118,11 @@ if choice1 == 'A':
                 if choice13A == 'A' or choice13A == 'B':
                     descriptive += 1
                     print('The shuttle runs you over as you leave the bookstore! You can’t afford the surgery you need because \nyou maxed your card in the bookstore and Health services can’t afford to pay fot it because of COVID cutbacks :( But, on the bright side, we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice13A == 'C':
                     normative +=1
                     print('You lose a nipple to frostbite but you go see Beyonce in concert with the money you saved at the Bookstore! Plus, more good news: we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(yay_sound)
             elif choice12A == 'second internship': #second internship
                 normative +=1
                 print('Applying for internships is tiring. Coffee break? You made a goal to only buy coffee a maximum of twice a week. \nYou followed your goal perfectly last week, but you already bought coffee twice this week. \nDo you decide to just go an extra time this week?')
@@ -110,9 +130,11 @@ if choice1 == 'A':
                 if choice14A == 'yes':
                     descriptive +=1
                     print('Feeling energized you start the semester off strong! You are sure to make dean’s list.')
+                    pygame.mixer.Sound.play(yay_sound)
                 elif choice14A == 'no':
                     normative +=1
                     print('Low on energy, you fall asleep in class and your professor despises you forever. They destroy your academic reputation and you end up dropping out. But, on the bright side, we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(horn_fail_sound)
         elif choice11A == 'no': #keep pasta
             descriptive +=1
             print('Yum! Your tummy is full and and you are ready for your next class. You have been struggling in this one but the S/NC deadline has passed. \nYou do not enjoy the material, and you realize you probably do not even need to be in this class. \nYou can drop the class with no fee, but you have already invested 75+ hours of work into the class (5 weeks of work), and you spent $65 on the textbook. Do you drop the class or keep the class?')
@@ -128,8 +150,10 @@ if choice1 == 'A':
                     if choice17A== 'froyo':
                         #neither normative nor descriptive
                         print('BRAIN FREEZE!! You contract a rare condition called super serious brain freeze and are no longer able to pursue higher level education. But, on the bright side, we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(horn_fail_sound)
                     elif choice17A == 'nap':
                         print('You wake up with an idea for a startup company and become a millionaire by senior year. Plus, more good news: we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(yay_sound)
                 elif choice16A == 'Rock':
                     descriptive +=1
                     print('You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. \nBut, your friend gets a text from her roommate saying her roommate is having some friends over. \nShe suggests you all hang out in your room instead Do you decide to:')
@@ -139,9 +163,11 @@ if choice1 == 'A':
                     if choice18A == 'A':
                         normative += 1
                         print('You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(yay_sound)
                     elif choice18A == 'B':
                         descriptive +=1
                         print('One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(horn_fail_sound)
             elif choice15A == 'keep': #keep class
                 descriptive +=1
                 print('Classes are back to back today. You read the course description and reviews and it seemed super interesting. \nThe teacher walks in and hands out the syllabus – it looks manageable. \nProf then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. \nDo you decide to take the class S/NC or take it for a grade?')
@@ -156,9 +182,11 @@ if choice1 == 'A':
                     if choice20A == 'first internship':
                         descriptive += 1
                         print('You brag to your friends about how you are a shoe-in for the internship you applied to and they become spiteful and never speak to you again. You are lonely forever. But, on the bright side, we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(horn_fail_sound)
                     elif choice20A == 'second internship':
                         normative +=1
                         print('A few weeks later you are notified that you got the internship! All of your career dreams come true. Plus, more good news: we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(yay_sound)
 
 
 #Hard semester
@@ -183,6 +211,7 @@ elif choice1B == 'B':
                 if choice5B == 'SciLi':
                     normative += 1
                     print('You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice5B == 'Rock':
                     descriptive += 1
                     print('Once at the Rock, you open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. \nYou find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. \nBoth applications are due tonight, so you only have time to apply to one. Which internship do you choose?')
@@ -192,6 +221,7 @@ elif choice1B == 'B':
                     elif choice6B == 'second internship':
                         normative += 1
                     print('When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
 
             elif choice4B == 'C': #don't buy the hoodie
                 normative += 1
@@ -200,9 +230,11 @@ elif choice1B == 'B':
                 if choice7B == 'wrap':
                     normative += 1
                     print('Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice7B == 'fried chicken': #fried chicken
                     descriptive += 1
                     print('Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
 
         else: #keep the pasta bowl
             descriptive += 1
@@ -219,9 +251,11 @@ elif choice1B == 'B':
             if choice9B == 'A':
                 normative += 1
                 print('You have a great time with your friends and a great rest of the semester! \nSome more good news: we found out what kind of decision-maker you are!')
+                pygame.mixer.Sound.play(yay_sound)
             elif choice9B == 'B':
                 descriptive += 1
                 print('On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                pygame.mixer.Sound.play(horn_fail_sound)
 
     elif choice2B == 'class': #shop another class
         print('Good choice! You head to your next class. You read the course description and reviews and it seems super interesting. The teacher walks in and hands out the syllabus; it looks manageable. \nProf then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. \nDo you decide to take the class S/NC or take it for a grade?')
@@ -240,6 +274,7 @@ elif choice1B == 'B':
                 if choice12B == 'SciLi':
                     normative += 1
                     print('You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice12B == 'Rock':
                     descriptive += 1
                     print('Once at the Rock, you open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. \nYou find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. \nBoth applications are due tonight, so you only have time to apply to one. Which internship do you choose?')
@@ -249,6 +284,7 @@ elif choice1B == 'B':
                     elif choice13 == 'second internship':
                         normative += 1
                     print('When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
 
             elif choice11B == 'C': #don't buy the hoodie
                 normative += 1
@@ -257,9 +293,11 @@ elif choice1B == 'B':
                 if choice14B == 'wrap':
                     normative += 1
                     print('Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
                 elif choice14B == 'fried chicken': #fried chicken
                     descriptive += 1
                     print('Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                    pygame.mixer.Sound.play(horn_fail_sound)
         elif choice10B == 'grade': #take the class for a grade
             normative +=1
             print('Weeks later, the S/NC deadline has passed, but you are struggling in the class. You do not enjoy the material, and you realize you probably do not even need to be in this class. You can drop the class with no fee, but you have already invested 75+ hours of work into the class (5 weeks of work), and you spent $65 on the textbook. Do you drop the class or keep the class?')
@@ -278,6 +316,7 @@ elif choice1B == 'B':
                     if choice17B == 'SciLi':
                         normative += 1
                         print('You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                        pygame.mixer.Sound.play(horn_fail_sound)
                     elif choice17B == 'Rock':
                         descriptive += 1
                         print('Once at the Rock, you open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. \nYou find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. \nBoth applications are due tonight, so you only have time to apply to one. Which internship do you choose?')
@@ -287,6 +326,7 @@ elif choice1B == 'B':
                         elif choice18B == 'second internship':
                             normative += 1
                         print('When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are:')
+                        pygame.mixer.Sound.play(horn_fail_sound)
 
                 elif choice16B == 'C': #don't buy the hoodie
                     normative += 1
@@ -295,9 +335,11 @@ elif choice1B == 'B':
                     if choice19B == 'wrap':
                         normative += 1
                         print('Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                        pygame.mixer.Sound.play(horn_fail_sound)
                     elif choice19B == 'fried chicken': #fried chicken
                         descriptive += 1
                         print('Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                        pygame.mixer.Sound.play(horn_fail_sound)
             elif choice15B == 'keep': #keep the class
                 descriptive += 1
                 print('If you are going to make it through this class, you will need coffee. But, you made a goal to only buy coffee a maximum of twice a week. \nYou followed your goal perfectly last week, but you already bought coffee twice this week. \nDo you decide to just go an extra time this week, or do you energize yourself with a nap instead?')
@@ -311,13 +353,16 @@ elif choice1B == 'B':
                     if choice21B == 'A':
                         normative += 1
                         print('You have a great time with your friends and a great rest of the semester! Some more good news: we found out what kind of decision-maker you are!')
+                        pygame.mixer.Sound.play(yay_sound)
                     elif choice21B == 'B':
                         descriptive += 1
                         print('On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! But, on the bright side, we found out what kind of decision-maker you are:')
+                        pygame.mixer.Sound.play(horn_fail_sound)
 
                 elif choice20B == 'nap': #nap
                     normative += 1
                     print('You peacefully fall asleep and have a great rest of the semester! Some more good news: we found out what kind of decision-maker you are!')
+                    pygame.mixer.Sound.play(yay_sound)
 
 #Results
 if normative > descriptive:
