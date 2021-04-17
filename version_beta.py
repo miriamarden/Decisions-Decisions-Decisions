@@ -1,7 +1,6 @@
 # testing out basic pygame stuff
 import pygame
 import os
-
 import ptext
 
 pygame.init()
@@ -38,6 +37,7 @@ b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), 
 
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b):
     win.fill(red)
+    # WIN.blit(background_variable, (0, 0))
     win.blit(bear, (bear_rect.x, bear_rect.y))
     win.blit(a_let, (a_position.x, a_position.y))
     win.blit(b_let, (b_position.x, b_position.y))
@@ -85,7 +85,9 @@ def main():
             # wait function to display text or space bar to continue?
             intro = False
         while main_game:
-            #questions loop
+            # questions loop
+            # use colliderect function as option selection
+            # calculations and conditionals should stay the same
         while results:
             #DISPLAY RESULTS
 
