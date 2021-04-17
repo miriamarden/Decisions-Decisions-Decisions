@@ -30,6 +30,8 @@ main_green = pygame.image.load(os.path.join('main_green.jpg'))
 main_green = pygame.transform.scale(main_green, (width, height))
 bear_img = pygame.image.load(os.path.join('bear_red.png'))
 bear = pygame.transform.scale(bear_img, (184, 178))
+a_let = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
+b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
 # bear_rect = bear.get_rect()
 # SPACE = pygame.transform.scale(pygame.image.load(
 # os.path.join('Assets', 'space.png')), (WIDTH, HEIGHT))
@@ -41,16 +43,17 @@ bear = pygame.transform.scale(bear_img, (184, 178))
 # 3. blit image to screen
 
 
-def draw_window(bear_rect, bear, welcome):
+def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear):
     win.fill(red)
-    win.blit(welcome, (400, 300))
     win.blit(bear, (bear_rect.x, bear_rect.y))
+    win.blit(a_let, (a_position.x, a_position.y))
+    win.blit(b_let, (b_position.x, b_position.y))
     text_location = [bear_rect.x - 400, bear_rect.y - 100]
-    ptext.draw('Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. \nAt the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. \nYou search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', (text_location[0], text_location[1]), align="center",  width=400)
+    ptext.draw('Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', (text_location[0], text_location[1]), align="center",  width=400)
     pygame.display.flip()
 
 
-def magenta_movement(keys_pressed, bear_rect):
+def bear_movement(keys_pressed, bear_rect):
     if keys_pressed[pygame.K_LEFT] and bear_rect.x - VEL > 0:
         bear_rect.x -= VEL
     if keys_pressed[pygame.K_RIGHT] and bear_rect.x + bear_rect[2] + VEL < width:
@@ -68,6 +71,8 @@ def magenta_movement(keys_pressed, bear_rect):
 def main():
     # background = win.fill(red)
     bear_rect = pygame.Rect(1000, 200, 184, 178)
+    a_position = pygame.Rect((width * 0.25)-40, height * 0.75, 80, 80)
+    b_position = pygame.Rect((width * 0.75) -40, height * 0.75, 80, 80)
     print(bear_rect.x)
     clock = pygame.time.Clock()
     run = True
@@ -77,9 +82,10 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
+        # start game text
         keys_pressed = pygame.key.get_pressed()
-        magenta_movement(keys_pressed, bear_rect)
-        draw_window(bear_rect, bear, welcome)
+        bear_movement(keys_pressed, bear_rect)
+        draw_window(bear_rect, a_position, b_position, a_let, b_let, bear)
         pygame.display.flip()
     main()
 
