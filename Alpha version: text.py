@@ -50,17 +50,17 @@ if choice1 == 'A':
                     elif choice6A == 'B':
                         descriptive += 1
                         print('On the way to Emwool you trip over someone’s illegal pet snake and it eats you. But, on the bright side, we found out what kind of decision-maker you are!')
-            elif choice4A == 'nap': #take nap instead of flex
+            elif choice4A == 'nap':  # take nap instead of flex
                 print('You just had the snuggliest nap of your life. Now you have the post nap munchies. You are not on meal plan this year, but you are craving a pasta bowl from Andrews. \nYou pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. \nIt looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.\nThey offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?')
                 choice7A = input('Type "yes" or "no" to make your choice:')
                 if choice7A == 'yes':
                     normative += 1
                     print('A blizzard hits PVD and you have no pasta so you starve to death in your dorm. But, on the bright side, we found out what kind of decision-maker you are!')
                 elif choice7A == 'no':
-                    descriptive +=1
+                    descriptive += 1
                     print('You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. But, on the bright side, we found out what kind of decision-maker you are!')
-        elif choice3A == 'C': #don't buy hoodie
-            normative +=1
+        elif choice3A == 'C':  # don't buy hoodie
+            normative += 1
             print('You’re making responsible decisions today! You decide to keep this up and head to your next class. \nYou read the course description and reviews and it seemed super interesting. The teacher walks in and hands out the syllabus – it looks manageable. \nProf then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. \nDo you decide to take the class S/NC or take it for a grade?')
             choice8A = input('Type "S/NC" or "grade" to make your choice:')
             if choice8A == 'S/NC' or choice8A == 'SNC':
