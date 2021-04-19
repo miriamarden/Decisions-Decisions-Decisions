@@ -43,8 +43,8 @@ def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_be
     win.blit(b_letter, (b_position.x, b_position.y))
     text_location = [bear_rect.x - 400, bear_rect.y - 100]
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center",  width=400)
-    ptext.draw(string_a, (a_position.x, a_position.y - 80))
-    ptext.draw(string_b, (b_position.x, b_position.y - 80))
+    ptext.draw(string_a, (a_position.x, a_position.y - 80), width=300)
+    ptext.draw(string_b, (b_position.x, b_position.y - 80), width=300)
     pygame.display.flip()
 
 
