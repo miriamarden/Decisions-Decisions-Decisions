@@ -26,8 +26,8 @@ main_green = pygame.image.load(os.path.join('main_green.jpg'))
 main_green = pygame.transform.scale(main_green, (width, height))
 bear_img = pygame.image.load(os.path.join('bear_red.png'))
 bear = pygame.transform.scale(bear_img, (184, 178))
-a_letter = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
-b_letter = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
+a_let = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
+b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
 # bear_rect = bear.get_rect()
 
 # font stuff options: 'timesnewroman', 'georgia', 'helvetica'
@@ -61,8 +61,6 @@ def bear_movement(keys_pressed, bear_rect):
 
 def main():
     bear_rect = pygame.Rect(1000, 200, 184, 178)
-    a_let = pygame.Rect(1000,200,80,80)
-    b_let = pygame.Rect(1000,200,80,80)
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
     string_bear = 'welcome to the game!'  # no line breaks needed
