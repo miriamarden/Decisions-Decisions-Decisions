@@ -26,8 +26,8 @@ main_green = pygame.image.load(os.path.join('main_green.jpg'))
 main_green = pygame.transform.scale(main_green, (width, height))
 bear_img = pygame.image.load(os.path.join('bear_red.png'))
 bear = pygame.transform.scale(bear_img, (184, 178))
-a_let = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
-b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
+a_letter = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
+b_letter = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
 # bear_rect = bear.get_rect()
 
 # font stuff options: 'timesnewroman', 'georgia', 'helvetica'
@@ -39,8 +39,8 @@ b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), 
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b):
     win.fill(red)
     win.blit(bear, (bear_rect.x, bear_rect.y))
-    win.blit(a_let, (a_position.x, a_position.y))
-    win.blit(b_let, (b_position.x, b_position.y))
+    win.blit(a_letter, (a_position.x, a_position.y))
+    win.blit(b_letter, (b_position.x, b_position.y))
     text_location = [bear_rect.x - 400, bear_rect.y - 100]
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center",  width=400)
     ptext.draw(string_a, (a_position.x, a_position.y - 80))
@@ -61,6 +61,8 @@ def bear_movement(keys_pressed, bear_rect):
 
 def main():
     bear_rect = pygame.Rect(1000, 200, 184, 178)
+    a_let = pygame.Rect(1000,200,80,80)
+    b_let = pygame.Rect(1000,200,80,80)
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
     string_bear = 'welcome to the game!'  # no line breaks needed
