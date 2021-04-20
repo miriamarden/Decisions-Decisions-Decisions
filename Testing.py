@@ -61,7 +61,7 @@ def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_be
     win.blit(background, (0,0))
     win.blit(bear, (bear_rect.x, bear_rect.y))
     win.blit(a_let, (a_position.x, a_position.y))
-    win.blit(b_let, (b_position.x, b_position.y)
+    win.blit(b_let, (b_position.x, b_position.y))
     text_location = [bear_rect.x - 400, bear_rect.y - 100]
     #text_location = [bear_rect.x - 400, bear_rect.y - 100]
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center",  width=400)
