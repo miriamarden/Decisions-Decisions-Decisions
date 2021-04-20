@@ -1,7 +1,6 @@
 # testing out basic pygame stuff
 import pygame
 import os
-
 import ptext
 
 pygame.init()
@@ -29,6 +28,26 @@ bear = pygame.transform.scale(bear_img, (184, 178))
 a_let = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
 b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
 # bear_rect = bear.get_rect()
+SciLi_mice = pygame.image.load(os.path.join('SciLi_mice.png'))
+SciLi_mice = pygame.transform.scale(SciLi_mice, (width, height))
+Andrews = pygame.image.load(os.path.join('andrews.jpg'))
+Andrews = pygame.transform.scale(Andrews, (width, height))
+Bookstore = pygame.image.load(os.path.join('bbookstore.jpg'))
+Bookstore = pygame.transform.scale(Bookstore, (width, height))
+Blueno = pygame.image.load(os.path.join('Blueno.jpg'))
+Blueno = pygame.transform.scale(Blueno, (width, height))
+classroom = pygame.image.load(os.path.join('classroom_pic.jpg'))
+classroom = pygame.transform.scale(classroom, (width, height))
+dorm_room = pygame.image.load(os.path.join('dorm_room.jpg'))
+dorm_room = pygame.transform.scale(dorm_room, (width, height))
+inside_Rock = pygame.image.load(os.path.join('inside_Rock.jpg'))
+inside_Rock = pygame.transform.scale(inside_Rock, (width, height))
+outside_SciLi = pygame.image.load(os.path.join('Outside_sci_li.jpg'))
+outside_SciLi = pygame.transform.scale(outside_SciLi, (width, height))
+Thayer_street = pygame.image.load(os.path.join('Thayer-Street.jpg'))
+Thayer_street = pygame.transform.scale(Thayer_street, (width, height))
+VDub  = pygame.image.load(os.path.join('Verney-Woolley.jpg'))
+VDub = pygame.transform.scale(VDub, (width, height))
 
 # font stuff options: 'timesnewroman', 'georgia', 'helvetica'
 # 1. create font object
@@ -38,13 +57,14 @@ b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), 
 
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b):
     win.fill(red)
+    # WIN.blit(background_variable, (0, 0))
     win.blit(bear, (bear_rect.x, bear_rect.y))
-    win.blit(a_let, (a_position.x, a_position.y))
-    win.blit(b_let, (b_position.x, b_position.y))
+    win.blit(a_letter, (a_position.x, a_position.y))
+    win.blit(b_letter, (b_position.x, b_position.y))
     text_location = [bear_rect.x - 400, bear_rect.y - 100]
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center",  width=400)
-    ptext.draw(string_a, (a_position.x, a_position.y - 80))
-    ptext.draw(string_b, (b_position.x, b_position.y - 80))
+    ptext.draw(string_a, (a_position.x, a_position.y - 80), width=300)
+    ptext.draw(string_b, (b_position.x, b_position.y - 80), width=300)
     pygame.display.flip()
 
 
@@ -85,7 +105,9 @@ def main():
             # wait function to display text or space bar to continue?
             intro = False
         while main_game:
-            #questions loop
+            # questions loop
+            # use colliderect function as option selection
+            # calculations and conditionals should stay the same
         while results:
             #DISPLAY RESULTS
 
