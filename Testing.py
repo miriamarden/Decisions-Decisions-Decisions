@@ -58,11 +58,8 @@ outside_SciLi = pygame.image.load(os.path.join('Outside_sci_li.jpg'))
 outside_SciLi = pygame.transform.scale(outside_SciLi, (width, height))
 Thayer_street = pygame.image.load(os.path.join('Thayer-Street.jpg'))
 Thayer_street = pygame.transform.scale(Thayer_street, (width, height))
-
-
-# VDub  = pygame.image.load(os.path.join('Verney-Woolley.jpg.jpg'))
-# VDub = pygame.transform.scale(VDub, (width, height))
-# bear_rect = bear.get_rect()
+VDub = pygame.image.load(os.path.join('assets', 'Verney-Woolley.jpg.jpg'))
+VDub = pygame.transform.scale(VDub, (width, height))
 
 # font stuff options: 'timesnewroman', 'georgia', 'helvetica'
 # 1. create font object
@@ -78,8 +75,8 @@ def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_be
     text_location = [bear_rect.x - 400, bear_rect.y - 100]
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center", width=400, color=brown,
                background=white)
-    ptext.draw(string_a, (a_position.x, a_position.y - 80), width=300, background=brown)
-    ptext.draw(string_b, (b_position.x, b_position.y - 80), width=300, background=brown)
+    ptext.draw(string_a, (a_position.x-120, a_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
+    ptext.draw(string_b, (b_position.x-120, b_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
     pygame.display.flip()
 
 
@@ -101,6 +98,8 @@ def main():
     string_bear = ''  # no line breaks needed
     string_a = ''  # line breaks needed
     string_b = ''  # line breaks needed
+    descriptive = 0
+    normative = 0
     clock = pygame.time.Clock()
     run = True
     intro = True
@@ -108,17 +107,85 @@ def main():
 
     gameplay_scenarios = {
         'A': {
-            1: [Andrews, 'retail', 'food', 'retail or food therapy?', 'B'],
-            2: [classroom, 'lunch', 'class', 'It is the first day of classes, and you just shopped three classes in a row. Do you take a break for lunch or shop another class?', 'C']
+            #hard semester
+            1: [classroom, 'class', 'lunch', 'It is the first day of classes, and you just shopped three classes in a row. Do you take a break for lunch or shop another class?', 'B'],
+            #easy semester
+            2: [Andrews, 'retail', 'food', 'retail or food therapy?', 'C']
         },
+        #My stuff
         'B': {
-            1: [Bookstore, 'Buy the $80 hoodie', 'Leave the store', 'Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies.\nEach hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'D'],
-            2: [Bookstore, 'flex', 'nap', 'Now that you have made your purchase, are you going to flex with your new hoodie on the main green or choose modesty and take a cozy nap in your toasty new fit? ', 'E']
+            #shop another class class
+            1: [classroom, 'grade', 'S/NC', 'Good choice! You head to your next class. You read the course description and reviews and it seems super interesting. The teacher walks in and hands out the syllabus; it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. Do you decide to take the class S/NC or take it for a grade?', 'D1'],
+            #go to lunch
+            2: [Andrews, 'yes', 'no', 'Lunch it is! You are not on meal plan this year, but you are really hungry and you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E1']
+
         },
-        'C': {
-            1: [Andrews, 'yes', 'no', 'Lunch it is! You are not on meal plan this year, but you are really hungry and you are craving a pasta bowl from Andrews. \nYou pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'F'],
-            2: [classroom,'S/NC', 'grade', 'Good choice! You head to your next class. You read the course description and reviews and it seems super interesting. The teacher walks in and hands out the syllabus; it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. Do you decide to take the class S/NC or take it for a grade?' 'G']
+        'D1': {
+            #take the class for a grade
+            1: [classroom, 'drop', 'keep', 'Weeks later, the S/NC deadline has passed, but you are struggling in the class. You do not enjoy the material, and you realize you probably do not even need to be in this class. You can drop the class with no fee, but you have already invested 75+ hours of work into the class (5 weeks of work), and you spent $65 on the textbook. Do you drop the class or keep the class?', 'F1'],
+            #take the class S/NC
+            2: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from taking the class S/NC, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. \nAt the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'G1']
+        },
+        'E1': {
+            #yes sell pasta
+            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'You are feeling richer now, so you decide to treat yourself to a Brown hoodie. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'G1'],
+            #no sell pasta
+            2: [Andrews, 'nap', 'coffee', 'After all that yummy pasta, you fall into a food coma. You really want some coffee, but you made a goal to only buy coffee a maximum of twice a week. \nYou followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week, or do you energize yourself with a nap instead?', 'H1']
+
+        },
+
+        'F1':{
+            #drop the class
+            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from dropping the class, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. \nAt the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you' 'G1'],
+            #keep the class
+            2: [classroom, 'nap', 'coffee', 'If you are going to make it through this class, you will need coffee. But, you made a goal to only buy coffee a maximum of twice a week. \nYou followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week, or do you energize yourself with a nap instead?', 'H1']
+        },
+
+        'G1': {
+            #Leave the store without buying anything
+            1: [Thayer_street, 'wrap', 'fried chicken', 'Since you saved yourself some money, you decide to treat yourself to dinner on Thayer. You could really go for some delicious fried chicken, but you have promised yourself you would cut back on fried foods. \nYou have been good about it; you have not had any fried food in two weeks. Do you decide to stick to your goal and get a healthy wrap, or do you reward yourself for your progress and go for the fried chicken?', 'J1'],
+            #Buy the $80 hoodie
+            2: [outside_SciLi, 'SciLi', 'Rock', 'Unfortunately, you are now broke. You head to the SciLi to look for a summer internship on BrownConnect. You run into your friend outside of Caswell and talk for a bit. You both end up complaining about how dusty and depressing some of the SciLi is. They tell you that the last time they were in the stacks, someone there saw a mouse. Gross. But you are already so close to the SciLi. Do you decide to go to the Sci Li since you are already so close and all stacks are rightfully terrible, or do you go to the Rock instead?', 'K1']
+
+        },
+
+        'H1': {
+            #Both of these paths are the same
+            1 and 2: [dorm_room, 'Change the location to your room', 'Stick to your friends room; the more people, the better!', 'Now, you feel more energized, so you decide to hang with some friends. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'I1'],
+        },
+
+        #This is an ending
+        'I1': {
+            #Your room
+            1: [dorm_room, '', '', 'You have a great time with your friends and a great rest of the semester! Some more good news: we found out what kind of decision-maker you are!',''],
+            #Friend's room
+            2: [VDub, '', '', 'On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! But, on the bright side, we found out what kind of decision-maker you are:','']
+
+        },
+        #This is an ending
+        'J1': {
+            #wrap
+            1: [Thayer_street, '', '', 'Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are:', ''],
+            #fried chicken
+            2: [Thayer_street, '', '', 'Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are:', '']
+        },
+
+        'K1': {
+            #Sci Li
+            1: [SciLi_mice, '', '', 'You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are:', ''],
+            # Rock
+            2: [inside_Rock, 'The $15/hour internship with the unknown acceptance rate', 'The $13/hour internship with the 40% acceptance rate','Once at the Rock, you open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. You find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. Both applications are due tonight, so you only have time to apply to one. Which internship do you choose?', 'L1']
+
+        },
+
+        'L1': {
+            1 and 2: [Blueno, '', '', 'When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are:', '']
         }
+
+
+        # #Julia's stuff
+        
+
     }
 
 
@@ -148,8 +215,10 @@ def main():
 
         if a_position.colliderect(bear_rect):
             option, should_update = 1, True
+            normative += 1
         elif b_position.colliderect(bear_rect):
             option, should_update = 2, True
+            descriptive += 1
         else:
             should_update = False
 
