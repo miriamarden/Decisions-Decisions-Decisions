@@ -9,7 +9,7 @@ win = pygame.display.set_mode((width, height))
 # pygame.display.set_caption('Decisions, Decisions, Decisions')
 ##use pdraw to add a background color to the text
 
-# SOUND CODE
+#Import sound effects
 pygame.mixer.init()
 horn_fail_sound = pygame.mixer.Sound(os.path.join('sound', 'horn_fail_lose.wav'))
 yay_sound = pygame.mixer.Sound(os.path.join('sound', 'Yay_sound.wav'))
@@ -19,28 +19,30 @@ bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 # in game loop
 # pygame.mixer.music.play(-1)
 
-# initializing variables
+# Initializing Variables
+#colors
 white = (255, 255, 255)
-blue_green = (155, 250, 255)
-magenta = (255, 155, 255)
-red = (255, 75, 75)
+blue_green = (155, 250, 255) #delete?
+magenta = (255, 155, 255) #delete?
+red = (255, 75, 75) #delete?
 brown = (100, 50, 10)
-VEL = 5
-FPS = 60
+VEL = 5 #delete?
+FPS = 60 #delete?
 
 
-font = pygame.font.SysFont('georgia.ttf', 24, red)
-test_font = font.render('Hello', True, white)
-welcome = font.render('Welcome to the Brown experience! Today Ill be your guide.', True, white)
+font = pygame.font.SysFont('georgia.ttf', 24, red) #delete?
+test_font = font.render('Hello', True, white) #delete?
+welcome = font.render('Welcome to the Brown experience! Today Ill be your guide.', True, white) #delete?
 
-# images
-main_green = pygame.image.load(os.path.join('assets', 'main_green_snake.jpg'))
-main_green = pygame.transform.scale(main_green, (width, height))
+#Upload images
 bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))
 bear = pygame.transform.scale(bear_img, (184, 178))
 a_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option A.png')), (80, 80))
 b_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option B.png')), (80, 80))
 
+#Backgrounds
+main_green = pygame.image.load(os.path.join('assets', 'main_green_snake.jpg'))
+main_green = pygame.transform.scale(main_green, (width, height))
 SciLi_mice = pygame.image.load(os.path.join('assets', 'SciLi_mice.png'))
 SciLi_mice = pygame.transform.scale(SciLi_mice, (width, height))
 Andrews = pygame.image.load(os.path.join('assets', 'andrews.jpg'))
@@ -76,16 +78,7 @@ movies = pygame.transform.scale(movies, (width, height))
 jail = pygame.image.load(os.path.join('assets', 'jail_pic.jpeg'))
 jail = pygame.transform.scale(jail, (width, height))
 
-# VDub  = pygame.image.load(os.path.join('Verney-Woolley.jpg.jpg'))
-# VDub = pygame.transform.scale(VDub, (width, height))
-# bear_rect = bear.get_rect()
-
-# font stuff options: 'timesnewroman', 'georgia', 'helvetica'
-# 1. create font object
-# 2. render text into image with given color
-# 3. blit image to screen
-
-
+#This function...
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background, ):
     win.blit(background, (0, 0))
     win.blit(bear, (bear_rect.x, bear_rect.y))
@@ -98,7 +91,7 @@ def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_be
     ptext.draw(string_b, (b_position.x-120, b_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
     pygame.display.flip()
 
-
+#This function allows the user to move the bear around the screen by pressing the arrow keys on the keyboard.
 def bear_movement(keys_pressed, bear_rect):
     if keys_pressed[pygame.K_LEFT] and bear_rect.x - VEL > 0:
         bear_rect.x -= VEL
@@ -111,6 +104,7 @@ def bear_movement(keys_pressed, bear_rect):
 
 
 def main():
+    #Create rectangles so that we can use the colliderect function
     bear_rect = pygame.Rect(1000, 200, 184, 178)
     a_position = pygame.Rect((width * 0.33) - 40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
@@ -121,9 +115,10 @@ def main():
     normative = 0
     clock = pygame.time.Clock()
     run = True
-    intro = True
+    intro = True #delete?
     main_game = True
 
+    #This section codes the various pathways that the user can take throughout the game.
     gameplay_scenarios = {
         'A': {
             #hard semester
@@ -275,32 +270,35 @@ def main():
 
     }
 
-
+    #This is the first question that every user sees
     background = main_green_snake
     scenario = 'A'
     string_bear = 'Alex, your partner of 4 years, the love of your life, just broke up with you right before your flight to Brown for your first semester of university - they said they cannot do long distance. You are pursuing a double major, so it would be wise of you to start the heavy lifting from early. However, you are heartbroken and unsure of your ability to offer your best work. Do you'
     string_a = 'Take harder courses - you are a soldier!'
     string_b = 'Take mostly easy courses to prevent yourself from having a mental breakdown mid semester'
     should_update = False
-
+    
+    #This section allows the game to quit when the user presses the red x.
     while run:
         clock.tick(FPS)
-        for event in pygame.event.get(): ###Revanna
+        for event in pygame.event.get(): 
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-        # start game text
-        # use embedded while loops for intro and game sections
+                
+        #delete this?
         while intro:
             pygame.mixer.Sound.play(bear_song)
             string_bear = 'Welcome to the game, ill be your guide today! Were going to go on an adventure that you choose. To pick option A blah blah blah'
             # greetings and instructions part
             # wait function to display text or space bar to continue?
             intro = False
-
+            
+        #If the bear collides with the image "A," the user is taken down the pathway associated with option 1. For each question, option A corresponds with the normative decision-making theory. Therefore, when the user chooses option A, their "normative" score increases by 1. 
         if a_position.colliderect(bear_rect):
             option, should_update = 1, True
             normative += 1
+        #If the bear collides with the image "B," the user is taken down the pathway associated with option 2. For each question, option B corresponds with the descriptive decision-making theory. Therefore, when the user chooses option B, their "descriptive" score increases by 1.
         elif b_position.colliderect(bear_rect):
             option, should_update = 2, True
             descriptive += 1
