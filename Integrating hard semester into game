@@ -176,7 +176,7 @@ def choosing_options(bear_rect, a_let, b_let): #?????
                         #pygame.mixer.Sound.play(horn_fail_sound)
 
 
-    if bear_rect.colliderect(a_position):
+    if bear_rect.colliderect(b_position):
             descriptive += 1
             string_bear = 'You are looking for something to distract you from your breakup pain. What shall it be, retail therapy or eating your sorrows away?'
             string_a = 'retail'
