@@ -280,7 +280,8 @@ def main():
                 elif current_state == 1: # and game_over = True
                     background = the_office
                     # remove rectangles
-                    a_let.reshape
+                    a_position.x, a_position.y = 0, height
+                    b_position.x, b_position.y = 0, height
                     game_on = False
                     string_bear = 'YAY you have finished the game! You worked so hard, please have a seat on the couch ... Turns out this was secretly an experiment about your decision making all along, sorry for not telling you before. press spacebar to continue'
                     current_state += 1
