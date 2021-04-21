@@ -11,10 +11,8 @@ win = pygame.display.set_mode((width, height))
 
 #Import sound effects
 pygame.mixer.init()
-horn_fail_sound = pygame.mixer.Sound(os.path.join('sound', 'horn_fail_lose.wav'))
-yay_sound = pygame.mixer.Sound(os.path.join('sound', 'Yay_sound.wav'))
 tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
-bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
+bear_song = pygame.mixer.Sound(os.path.join('sound', 'bear_song_clip.wav'))
 
 # in game loop
 # pygame.mixer.music.play(-1)
@@ -134,8 +132,7 @@ def main():
         },
         'C': {
             1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'D2'],
-            2: [Andrews, 'yes', 'no', 'Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. '
-                                        'It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E2']
+            2: [Andrews, 'yes', 'no', 'Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E2']
         },
         'D1': {
             #take the class for a grade
