@@ -28,26 +28,6 @@ bear = pygame.transform.scale(bear_img, (184, 178))
 a_let = pygame.transform.scale(pygame.image.load(os.path.join('Option A.png')), (80, 80))
 b_let = pygame.transform.scale(pygame.image.load(os.path.join('Option B.png')), (80, 80))
 # bear_rect = bear.get_rect()
-SciLi_mice = pygame.image.load(os.path.join('SciLi_mice.png'))
-SciLi_mice = pygame.transform.scale(SciLi_mice, (width, height))
-Andrews = pygame.image.load(os.path.join('andrews.jpg'))
-Andrews = pygame.transform.scale(Andrews, (width, height))
-Bookstore = pygame.image.load(os.path.join('bbookstore.jpg'))
-Bookstore = pygame.transform.scale(Bookstore, (width, height))
-Blueno = pygame.image.load(os.path.join('Blueno.jpg'))
-Blueno = pygame.transform.scale(Blueno, (width, height))
-classroom = pygame.image.load(os.path.join('classroom_pic.jpg'))
-classroom = pygame.transform.scale(classroom, (width, height))
-dorm_room = pygame.image.load(os.path.join('dorm_room.jpg'))
-dorm_room = pygame.transform.scale(dorm_room, (width, height))
-inside_Rock = pygame.image.load(os.path.join('inside_Rock.jpg'))
-inside_Rock = pygame.transform.scale(inside_Rock, (width, height))
-outside_SciLi = pygame.image.load(os.path.join('Outside_sci_li.jpg'))
-outside_SciLi = pygame.transform.scale(outside_SciLi, (width, height))
-Thayer_street = pygame.image.load(os.path.join('Thayer-Street.jpg'))
-Thayer_street = pygame.transform.scale(Thayer_street, (width, height))
-VDub  = pygame.image.load(os.path.join('Verney-Woolley.jpg'))
-VDub = pygame.transform.scale(VDub, (width, height))
 
 # font stuff options: 'timesnewroman', 'georgia', 'helvetica'
 # 1. create font object
@@ -57,7 +37,7 @@ VDub = pygame.transform.scale(VDub, (width, height))
 
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b):
     win.fill(red)
-    win.blit(background_variable, (0, 0))
+    #win.blit(background, (0, 0))
     win.blit(bear, (bear_rect.x, bear_rect.y))
     win.blit(a_let, (a_position.x, a_position.y))
     win.blit(b_let, (b_position.x, b_position.y))
@@ -80,37 +60,42 @@ def bear_movement(keys_pressed, bear_rect):
 
 
 def main():
+    descriptive = 4
+    normative = 3
     bear_rect = pygame.Rect(1000, 200, 184, 178)
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
-    string_bear = 'welcome to the game!'  # no line breaks needed
+    string_bear = 'Welcome to our game! I will be your guide on a little choose your own Brown adventure. I will ask you questions with A/B responses. To make a section move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
     string_a = 'testing again again'  # line breaks needed
     string_b = 'answer 2 testing testing'  # line breaks needed
     clock = pygame.time.Clock()
     run = True
-    intro = True
-    main_game = True
-    results = True
+    main_game = False
+    results = False
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-        # start game text
-        # use embedded while loops for intro and game sections
-        while intro:
-            string_bear = 'Welcome to the game, ill be your guide today! Were going to go on an adventure that you choose. To pick option A blah blah blah'
-            # greetings and instructions part
-            # wait function to display text or space bar to continue?
-            intro = False
-        while main_game:
-            # questions loop
-            # use colliderect function as option selection
-            # calculations and conditionals should stay the same
-        while results:
-            #DISPLAY RESULTS
-
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    string_bear = 'start game text here'
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_a:
+                        results_game = True
+            if main_game:
+                string_bear = 'YAY you have finished the game! But ... it was secretly an experiment about your decision making all along, sorry for not telling you before. press spacebar to continue'
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_a:
+                        if descriptive > normative:
+                            string_bear = 'Turns out a majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choice, you tended to follow decision making fallacies and theories used to describe our weird choice. Congrats you’re as illogical as the rest of us!'
+                        elif normative > descriptive:
+                            string_bear = 'Turns out a majority of the decisions you made were normative. This means that you tended to make the most rational choices, rather than adhering to descriptive theories used to describe frequent fallacies in our decision making. Idk what to tell you make worse decisions more often i guess.'
+                        else:
+                            string_bear = 'You made the same number of descriptive and normative choices. This means you made an equal number of rational choices and choices that adhere to descriptive theories used to describe frequent fallacies in our decision making. I guess your complex or whatever ...'
+                # game questions
+            # use break or continue?
         keys_pressed = pygame.key.get_pressed()
         bear_movement(keys_pressed, bear_rect)
         draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b)
