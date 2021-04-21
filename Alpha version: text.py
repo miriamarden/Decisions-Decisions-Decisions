@@ -1,8 +1,10 @@
 #SOUND CODE
-horn_fail_sound = pygame.mixer.Sound("horn_fail_lose.wav")
+pygame.mixer.init()
+s = 'sound'
+horn_fail_sound = pygame.mixer.Sound(os.path.join(s, 'horn_fail_lose.wav'))
 yay_sound = pygame.mixer.Sound("yay_sound.wav")
 tada_sound = pygame.mixer.Sound("tada_sound.wav")
-bear_song = pygame.mixer.music.load("bear_song.wav")
+bear_song = pygame.mixer.music.load("bear_song_clip.wav")
 
 #in game loop
 pygame.mixer.music.play(-1)
