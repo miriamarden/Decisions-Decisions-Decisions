@@ -10,9 +10,6 @@ pygame.display.set_caption('Decisions, Decisions, Decisions')
 
 # initializing variables
 white = (255, 255, 255)
-blue_green = (155, 250, 255)
-magenta = (255, 155, 255)
-red = (255, 75, 75)
 brown = (100, 50, 10)
 VEL = 5
 FPS = 60
