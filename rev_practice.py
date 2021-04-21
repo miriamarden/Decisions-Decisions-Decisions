@@ -98,9 +98,9 @@ def main():
     bear_rect = pygame.Rect(1000, 200, 184, 178)
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
-    string_bear = 'Welcome to our game! I will be your guide on a little choose your own Brown adventure. I will ask you questions with A/B responses. To make a section move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
-    string_a = ''  # line breaks needed
-    string_b = ''  # line breaks needed
+    string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
+    string_a = ''  
+    string_b = ''  
     background = main_green_snake
     descriptive = 0
     normative = 0
@@ -115,11 +115,11 @@ def main():
             #hard semester
             1: [classroom, 'class', 'lunch', 'It is the first day of classes, and you just shopped three classes in a row. Do you take a break for lunch or shop another class?', 'B'],
             #easy semester
-            2: [main_green, 'retail', 'eating', 'You are looking for something to distract you from your breakup pain. What shall it be, retail therapy or eating your sorrows away?', 'C']
+            2: [main_green, 'retail', 'eating', 'You are looking for something to distract you from your pain. What shall it be, retail therapy or eating your sorrows away?', 'C']
         },
         'B': {
             #shop another class class
-            1: [classroom, 'grade', 'S/NC', 'Good choice! You head to your next class. You read the course description and reviews and it seems super interesting. The teacher walks in and hands out the syllabus; it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. Do you decide to take the class S/NC or take it for a grade?', 'D1'],
+            1: [classroom, 'grade', 'S/NC', 'Good choice! You head to your next class. You read the course description and reviews, and it seems super interesting. The teacher walks in and hands out the syllabus; it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. Do you decide to take the class S/NC or take it for a grade?', 'D1'],
             #go to lunch
             2: [Andrews, 'yes', 'no', 'Lunch it is! You are not on meal plan this year, but you are really hungry and you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E1']
         },
