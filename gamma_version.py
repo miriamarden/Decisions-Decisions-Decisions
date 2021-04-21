@@ -92,7 +92,7 @@ def main():
     bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
-    string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
+    string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
     string_a = ''
     string_b = ''
     background = main_green_snake
