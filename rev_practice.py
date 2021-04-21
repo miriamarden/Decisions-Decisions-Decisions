@@ -125,8 +125,7 @@ def main():
         },
         'C': {
             1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'D2'],
-            2: [Andrews, 'yes', 'no', 'Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. '
-                                        'It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E2']
+            2: [Andrews, 'yes', 'no', 'Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E2']
         },
         'D1': {
             #take the class for a grade
@@ -165,29 +164,29 @@ def main():
         #This is an ending
         'I1': {
             #Your room
-            1: [dorm_room, '', '', 'You have a great time with your friends and a great rest of the semester! Some more good news: we found out what kind of decision-maker you are!',''],
+            1: [dorm_room, '', '', 'You have a great time with your friends and a great rest of the semester! Some more good news: we found out what kind of decision-maker you are!', 'final'],
             #Friend's room
-            2: [VDub, '', '', 'On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! But, on the bright side, we found out what kind of decision-maker you are:','']
+            2: [VDub, '', '', 'On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! But, on the bright side, we found out what kind of decision-maker you are:', 'final']
 
         },
         #This is an ending
         'J1': {
             #wrap
-            1: [Thayer_street, '', '', 'Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are:', ''],
+            1: [Thayer_street, '', '', 'Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are:', 'final'],
             #fried chicken
-            2: [Thayer_street, '', '', 'Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are:', '']
+            2: [Thayer_street, '', '', 'Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are:', 'final']
         },
 
         'K1': {
             #Sci Li
-            1: [SciLi_mice, '', '', 'You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are:', ''],
+            1: [SciLi_mice, '', '', 'You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are:', 'final'],
             # Rock
             2: [inside_Rock, 'The $15/hour internship with the unknown acceptance rate', 'The $13/hour internship with the 40% acceptance rate','Once at the Rock, you open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. You find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. Both applications are due tonight, so you only have time to apply to one. Which internship do you choose?', 'L1']
 
         },
 
         'L1': {
-            1 and 2: [Blueno, '', '', 'When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are:', '']
+            1 and 2: [Blueno, '', '', 'When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are:', 'final']
         },
 
         'D2': {
@@ -215,12 +214,12 @@ def main():
             2: [inside_Rock, 'Change location to your room', 'Stick to your friends room; the more the merrier!', 'You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'Q2']
         },
         'J2': {
-            1: [roller_rink, '', '', 'You fall and somebody skates over your face, mangling it horribly, so you drop out of school and join the circus. But, on the bright side, we found out what kind of decision-maker you are!', ''],
-            2: [movies, '', '', 'The movie inspires you and helps you discover your true purpose in life - you dropout of school to become a country music star. Plus, we found out what kind of decision-maker you are', '']
+            1: [roller_rink, '', '', 'You fall and somebody skates over your face, mangling it horribly, so you drop out of school and join the circus. But, on the bright side, we found out what kind of decision-maker you are!', 'final'],
+            2: [movies, '', '', 'The movie inspires you and helps you discover your true purpose in life - you dropout of school to become a country music star. Plus, we found out what kind of decision-maker you are', 'final']
         },
         'K2': {
-            1: [Starbucks, '', '', 'You drop out of school and become an ambassador for self control and overcoming addiction. Your success is overwhelming. Plus, more good news: we found out what kind of decision-maker you are!', ''],
-            2: [Starbucks, '', '', 'You have a caffeine overload and pass out in Starbucks. Brown ships you back to your home state/country because they do not condone drug addiction on campus! But, on the bright side, we found out what kind of decision-maker you are!', '']
+            1: [Starbucks, '', '', 'You drop out of school and become an ambassador for self control and overcoming addiction. Your success is overwhelming. Plus, more good news: we found out what kind of decision-maker you are!', 'final'],
+            2: [Starbucks, '', '', 'You have a caffeine overload and pass out in Starbucks. Brown ships you back to your home state/country because they do not condone drug addiction on campus! But, on the bright side, we found out what kind of decision-maker you are!', 'final']
         },
         'L2': {
             1: [SciLi_mice, '', '', 'The mice of SciLi have made you their king/queen! You decide you no longer have use for education. More good news: we found out what kind of decision-maker you are!'],
@@ -231,32 +230,32 @@ def main():
             2: [Andrews, '', '', 'You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. But, on the bright side, we found out what kind of decision-maker you are!']
         },
         'N2': {
-            1: [classroom, '', '', 'Low on energy, you fall asleep in class and your professor despises you forever. They destroy your academic reputation and you end up dropping out. But, on the bright side, we found out what kind of decision-maker you are!', ''],
-            2: [classroom, '', '', 'Feeling energized you start the semester off strong! You are sure to make dean’s list. Plus, we found out what kind of decision-maker you are', '']
+            1: [classroom, '', '', 'Low on energy, you fall asleep in class and your professor despises you forever. They destroy your academic reputation and you end up dropping out. But, on the bright side, we found out what kind of decision-maker you are!', 'final'],
+            2: [classroom, '', '', 'Feeling energized you start the semester off strong! You are sure to make dean’s list. Plus, we found out what kind of decision-maker you are', 'final']
         },
         'O2': {
-            1: [Beyonce_concert, '', '', 'You lose a nipple to frostbite but you go see Beyonce in concert with the money you saved at the Bookstore! Plus, more good news: we found out what kind of decision-maker you are!', ''],
-            2: [Bookstore, '', '', 'The shuttle runs you over as you leave the bookstore! You can’t afford the surgery you need because you maxed your card in the bookstore and Health services can’t afford to pay fot it because of COVID cutbacks :( But, on the bright side, we found out what kind of decision-maker you are!', '']
+            1: [Beyonce_concert, '', '', 'You lose a nipple to frostbite but you go see Beyonce in concert with the money you saved at the Bookstore! Plus, more good news: we found out what kind of decision-maker you are!', 'final'],
+            2: [Bookstore, '', '', 'The shuttle runs you over as you leave the bookstore! You can’t afford the surgery you need because you maxed your card in the bookstore and Health services can’t afford to pay fot it because of COVID cutbacks :( But, on the bright side, we found out what kind of decision-maker you are!', 'final']
         },
         'P2': {
             1: [SciLi_mice, 'froyo', 'nap', 'You make friends with the mice and get a week`s worth of work done! You decide to celebrate. Will it be froyo or a well deserved nap?', 'S2'],
             2: [inside_Rock, 'Change the location to your room', 'Stick to your friends room; the more people the better!', 'You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'T2']
         },
         'Q2': {
-            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are!', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are!', '']
+            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are!', 'final'],
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are!', 'final']
         },
         'R2': {
-            1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. But, on the bright side, we found out what kind of decision-maker you are!', ''],
-            2: [main_green_snake, '', '', 'On the way to Emwool you trip over someone’s illegal pet snake and it eats you. But, on the bright side, we found out what kind of decision-maker you are!', '']
+            1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. But, on the bright side, we found out what kind of decision-maker you are!', 'final'],
+            2: [main_green_snake, '', '', 'On the way to Emwool you trip over someone’s illegal pet snake and it eats you. But, on the bright side, we found out what kind of decision-maker you are!', 'final']
         },
         'S2': {
-            1: [Froyo_store, '', '', 'BRAIN FREEZE!! You contract a rare condition called super serious brain freeze and are no longer able to pursue higher level education. But, on the bright side, we found out what kind of decision-maker you are!', ''],
-            2: [dorm_room, '', '', 'You wake up with an idea for a startup company and become a millionaire by senior year. Plus, more good news: we found out what kind of decision-maker you are!', '']
+            1: [Froyo_store, '', '', 'BRAIN FREEZE!! You contract a rare condition called super serious brain freeze and are no longer able to pursue higher level education. But, on the bright side, we found out what kind of decision-maker you are!', 'final'],
+            2: [dorm_room, '', '', 'You wake up with an idea for a startup company and become a millionaire by senior year. Plus, more good news: we found out what kind of decision-maker you are!', 'final']
         },
         'T2': {
-            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are!', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are!', '']
+            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are!', 'final'],
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are!', 'final']
         }
 
     }
@@ -279,7 +278,8 @@ def main():
                     current_state += 1
                      # game_over = False somewhere in the dictionary
                 elif current_state == 1: # and game_over = True
-                    background = the_office
+                    #background = the_office
+                    # remove rectangles
                     game_on = False
                     string_bear = 'YAY you have finished the game! You worked so hard, please have a seat on the couch ... Turns out this was secretly an experiment about your decision making all along, sorry for not telling you before. press spacebar to continue'
                     current_state += 1
