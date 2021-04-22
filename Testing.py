@@ -264,6 +264,7 @@ def main():
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are!', ''],
             2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are!', '']
         }
+        'final': { [the_office,'','', 'You"ve made your last decision, press the space bar to continue.'] }
 
     }
 

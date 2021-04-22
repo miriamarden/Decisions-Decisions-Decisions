@@ -14,9 +14,6 @@ brown = (100, 50, 10)
 VEL = 5
 FPS = 60
 
-font = pygame.font.SysFont('georgia.ttf', 24)
-test_font = font.render('Hello', True, white)
-
 # SOUND CODE
 pygame.mixer.init()
 horn_fail_sound = pygame.mixer.Sound(os.path.join('sound', 'horn_fail_lose.wav'))
@@ -92,12 +89,12 @@ def bear_movement(keys_pressed, bear_rect):
 
 
 def main():
-    bear_rect = pygame.Rect(1000, 200, 184, 178)
+    bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
-    string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
-    string_a = ''  
-    string_b = ''  
+    string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
+    string_a = ''
+    string_b = ''
     background = main_green_snake
     descriptive = 0
     normative = 0
@@ -280,15 +277,15 @@ def main():
                     a_position.x, a_position.y = 0, height
                     b_position.x, b_position.y = 0, height
                     game_on = False
-                    string_bear = 'YAY you have finished the game! You worked so hard, please have a seat on the couch ... Turns out this was secretly an experiment about your decision making all along, sorry for not telling you before. press spacebar to continue'
+                    string_bear = 'YAY! You have finished the game! You worked so hard, so please have a seat on the couch ... Turns out this was secretly a test of your decision-making techniques all along. Sorry for not telling you before. Press the spacebar to continue.'
                     current_state += 1
                 elif current_state == 2:
                     if descriptive > normative:
-                        string_bear = 'Turns out a majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choice, you tended to follow decision making fallacies and theories used to describe our weird choice. Congrats you’re as illogical as the rest of us!'
+                        string_bear = 'A majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choices, you tended to follow decision-making fallacies and theories used to describe our weird choice. Congrats; you are as illogical as the rest of us! Now, press the space bar again.'
                     elif normative > descriptive:
-                        string_bear = 'Turns out a majority of the decisions you made were normative. This means that you tended to make the most rational choices, rather than adhering to descriptive theories used to describe frequent fallacies in our decision making. Idk what to tell you make worse decisions more often i guess.'
+                        string_bear = 'A majority of the decisions you made were normative. This means that you tended to make the most rational choices, rather than adhering to descriptive theories used to describe frequent fallacies in our decision making. Idk what to tell you; make worse decisions more often, I guess. Now, press the space bar again.'
                     else:
-                        string_bear = 'You made the same number of descriptive and normative choices. This means you made an equal number of rational choices and choices that adhere to descriptive theories used to describe frequent fallacies in our decision making. I guess your complex or whatever ...'
+                        string_bear = 'You made the same number of descriptive and normative choices. This means you made an equal number of rational choices and choices that adhere to descriptive theories used to describe frequent fallacies in our decision making. I guess you are complex or whatever ... Now, press the space bar again.'
                     current_state += 1
                 elif current_state == 3:
                     string_bear = 'Thank you for playing! press space bar to quit.'
@@ -306,11 +303,10 @@ def main():
                 descriptive += 1
             else:
                 should_update = False
-
         keys_pressed = pygame.key.get_pressed()
         bear_movement(keys_pressed, bear_rect)
         if should_update:
-            bear_rect = pygame.Rect(1000, 200, 184, 178)
+            bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
             background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
         draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background)
         pygame.display.flip()
