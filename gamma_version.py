@@ -19,7 +19,7 @@ pygame.mixer.init()
 horn_fail_sound = pygame.mixer.Sound(os.path.join('sound', 'horn_fail_lose.wav'))
 yay_sound = pygame.mixer.Sound(os.path.join('sound', 'Yay_sound.wav'))
 tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
-bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
+bear_song = pygame.mixer.Sound(os.path.join('sound', 'bear_song_clip.wav'))
 
 # images
 bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))
@@ -95,6 +95,7 @@ def main():
     string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
     string_a = ''
     string_b = ''
+    pygame.mixer.Sound.play(bear_song)
     background = main_green
     descriptive = 0
     normative = 0
@@ -268,19 +269,21 @@ def main():
                     string_bear = 'Right before your flight to Brown for your first semester of university you had a huge fight with your bestfriend since 3rd grade - they said they dont wanna be long distance friends (?). You are pursuing a double major, so it would be wise of you to start the heavy lifting from early. However, you are heartbroken and unsure of your ability to offer your best work. Do you'
                     string_a = 'Take harder courses - you are a soldier!'
                     string_b = 'Take mostly easy courses to prevent yourself from having a mental breakdown mid semester'
+                    pygame.mixer.Sound.stop(bear_song)
                     # should_update = False
                     game_on = True
                     current_state += 1
                      # game_over = False somewhere in the dictionary
                 elif current_state == 1: # and game_over = True
                     background = the_office
-                    # remove rectangles
+                    pygame.mixer.Sound.play(tada_sound)
                     a_position.x, a_position.y = 0, height
                     b_position.x, b_position.y = 0, height
                     game_on = False
                     string_bear = 'YAY! You have finished the game! You worked so hard, so please have a seat on the couch ... Turns out this was secretly a test of your decision-making techniques all along. Sorry for not telling you before. Press the spacebar to continue.'
                     current_state += 1
                 elif current_state == 2:
+                    pygame.mixer.Sound.play(yay_sound)
                     if descriptive > normative:
                         string_bear = 'A majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choices, you tended to follow decision-making fallacies and theories used to describe our weird choice. Congrats; you are as illogical as the rest of us! Now, press the space bar again.'
                     elif normative > descriptive:
