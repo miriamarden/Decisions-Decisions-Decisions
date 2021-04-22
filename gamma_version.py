@@ -300,7 +300,7 @@ def main():
         },
         'T2': {
             # This is an ending
-            # change to your room
+            # change location to your room
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
             # stick to the original plan, your friends room
             2: [courthouse, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
