@@ -125,7 +125,9 @@ def main():
             2: [Andrews, 'yes', 'no', 'Lunch it is! You are not on meal plan this year, but you are really hungry and you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E1']
         },
         'C': {
+            # retail therapy
             1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:', 'D2'],
+            # eat
             2: [Andrews, 'yes', 'no', 'Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E2']
         },
         'D1': {
@@ -192,71 +194,115 @@ def main():
         },
 
         'D2': {
+            # Leave the store and do not buy a hoodie
             1: [classroom, 'grade', 'S/NC', 'You’re making responsible decisions today! You decide to keep this up and head to your next class. You read the course description and reviews and it seemed super interesting. The teacher walks in and hands out the syllabus – it looks manageable. Prof then emphasizes that her course is very intense and will require long hours of focused work and diligent time management. She further articulates that 65% of students tend to get a final grade below an A. Do you decide to take the class S/NC or take it for a grade?', 'F2'],
+            # Buy the hoodie
             2: [Bookstore, 'flex', 'nap', 'Now that you have made your purchase, are you going to flex with your new hoodie on the main green or choose modesty and take a cozy nap in your toasty new fit?', 'G2']
         },
         'E2': {
+            # Sell the pasta
             1: [inside_Rock, 'second internship', 'first internship', 'With money on the mind you decide to look for internships at the Rock. You open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. You find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. Both applications are due tonight, so you only have time to apply to one. Which internship do you choose?', 'H2'],
+            # Keep the pasta
             2: [classroom, 'drop', 'keep', 'Yum! Your tummy is full and and you are ready for your next class. You have been struggling in this one but the S/NC deadline has passed. You do not enjoy the material, and you realize you probably do not even need to be in this class. You can drop the class with no fee, but you have already invested 75+ hours of work into the class (5 weeks of work), and you spent $65 on the textbook. Do you drop the class or keep the class?', 'I2']
         },
         'F2': {
+            # keep the class
             1: [classroom, 'roller rink', 'movies', 'You are proud of your courage and decide to treat yourself with an adventure. Are you going to the roller rink or the movie theatre?', 'J2'],
+            # drop the class
             2: [Starbucks, 'no', 'yes', 'You are feeling liberated and think you deserve to feed your coffee addiction, however you made a goal to only buy coffee a maximum of twice a week. You followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week?', 'K2' ]
         },
         'G2': {
+            # flex
             1: [main_green, 'SciLi', 'Rock', 'You are starting to feel insecure about how good you look. Are you all beauty and no brains?? You decide to head to the Scili to validate your smartness. While walking over you run into your friend outside of Caswell and talk for a bit. You both end up complaining about how dusty and depressing some of the SciLi is. They tell you that the last time they were in the stacks, someone there saw a mouse. Gross. But you are already so close to the SciLi. Do you decide to go to the Sci Li since you are already so close and all stacks are rightfully terrible, or do you go to the Rock instead?', 'L2'],
+            # take a nap
             2: [Andrews, 'yes', 'no', 'You just had the snuggliest nap of your life. Now you have the post nap munchies. You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too. They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'M2']
         },
         'H2': {
+            # choose second internship
             1: [Starbucks, 'no', 'yes', 'Applying for internships is tiring. Coffee break? You made a goal to only buy coffee a maximum of twice a week. You followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week?', 'N2'],
+            # choose first internship
             2: [Bookstore, 'Leave the bookstore without buying anything', 'Buy the $80 hoodie', 'You’re about to be swimming in green so you need some new drip - preferably some threads that rep your school! You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:', 'O2']
         },
         'I2': {
+            # drop the class
             1: [outside_SciLi, 'SciLi', 'Rock', 'You’re feeling a little academically insecure so you decide to go to the library and beat the books. You’re on your way to a late night grind in the stacks at the SciLi. You run into your friend outside of Caswell and talk for a bit. You both end up complaining about how dusty and depressing some of the scili is. They tell you that the last time they were in the stacks, someone there saw a mouse. Gross. But you’re already so close to the SciLi. Do you decide to go to the Sci Li since you’re already so close and all stacks are rightfully terrible, or do you go to the Rock instead?', 'P2'],
+            # keep the class
             2: [inside_Rock, 'Change location to your room', 'Stick to your friends room; the more the merrier!', 'You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'Q2']
         },
         'J2': {
+            # This is an ending
+            # roller rink
             1: [roller_rink, '', '', 'You fall and somebody skates over your face, mangling it horribly, so you drop out of school and join the circus. Now, press the spacebar to continue', ''],
+            # movies
             2: [movies, '', '', 'The movie inspires you and helps you discover your true purpose in life - you dropout of school to become a country music star. Now, press the spacebar to continue', '']
         },
         'K2': {
+            # This is an ending
+            # no coffee
             1: [Starbucks, '', '', 'You drop out of school and become an ambassador for self control and overcoming addiction. Your success is overwhelming. Now, press the spacebar to continue', ''],
+            # yes coffee
             2: [Starbucks, '', '', 'You have a caffeine overload and pass out in Starbucks. Brown ships you back to your home state/country because they do not condone drug addiction on campus! Now, press the spacebar to continue', '']
         },
         'L2': {
+            # This is an ending
+            # SciLi
             1: [SciLi_mice, '', '', 'The mice of SciLi have made you their king/queen! You decide you no longer have use for education. Now, press the spacebar to continue', ''],
+            # Rock
             2: [inside_Rock, 'Change the location to you room', 'Stick to your friends room; the more people the better!', 'After a bit of studying at the Rock you decide you deserve to hang out with some friends. You and your friends decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'R2']
         },
         'M2': {
+            # This is an ending
+            # sell pasta
             1: [dorm_room, '', '', 'A blizzard hits PVD and you have no pasta so you starve to death in your dorm. Now, press the spacebar to continue', ''],
+            # keep pasta
             2: [Andrews, '', '', 'You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. Now, press the spacebar to continue', '']
         },
         'N2': {
+            # This is an ending
+            # yes coffee
             1: [classroom, '', '', 'Low on energy, you fall asleep in class and your professor despises you forever. They destroy your academic reputation and you end up dropping out. Now, press the spacebar to continue', ''],
+            # no coffee
             2: [classroom, '', '', 'Feeling energized you start the semester off strong! You are sure to make dean’s list. Now, press the spacebar to continue', '']
         },
         'O2': {
+            # This is an ending
+            # Leave bookstore, do not buy hoodie
             1: [Beyonce_concert, '', '', 'You lose a nipple to frostbite but you go see Beyonce in concert with the money you saved at the Bookstore! Now, press the spacebar to continue', ''],
+            # buy hoodie
             2: [Bookstore, '', '', 'The shuttle runs you over as you leave the bookstore! You can’t afford the surgery you need because you maxed your card in the bookstore and Health services can’t afford to pay fot it because of COVID cutbacks :( Now, press the spacebar to continue', '']
         },
         'P2': {
+            # SciLi
             1: [SciLi_mice, 'froyo', 'nap', 'You make friends with the mice and get a week`s worth of work done! You decide to celebrate. Will it be froyo or a well deserved nap?', 'S2'],
+            # Rock
             2: [inside_Rock, 'Change the location to your room', 'Stick to your friends room; the more people the better!', 'You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'T2']
         },
         'Q2': {
+            # This is an ending
+            # change to your room
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
+            # stick to orignal plan, your friends room
             2: [courthouse, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         },
         'R2': {
+            # This is an ending
+            # change to your room
             1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. Now, press the spacebar to continue', ''],
+            # stick to the original plan, your friends room
             2: [main_green_snake, '', '', 'On the way to Emwool you trip over someone’s illegal pet snake and it eats you. Now, press the spacebar to continue', '']
         },
         'S2': {
+            # This is an ending
+            # froyo
             1: [Froyo_store, '', '', 'BRAIN FREEZE!! You contract a rare condition called super serious brain freeze and are no longer able to pursue higher level education. Now, press the spacebar to continue', ''],
+            # nap
             2: [dorm_room, '', '', 'You wake up with an idea for a startup company and become a millionaire by senior year. Now, press the spacebar to continue', '']
         },
         'T2': {
+            # This is an ending
+            # change to your room
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
+            # stick to the original plan, your friends room
             2: [courthouse, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         }
 
