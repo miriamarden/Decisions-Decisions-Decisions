@@ -307,7 +307,10 @@ def main():
         bear_movement(keys_pressed, bear_rect)
         if should_update:
             bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
-            background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
+            try:
+                background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
+            except KeyError:
+                game_on = False
         draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background)
         pygame.display.flip()
 
