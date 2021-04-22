@@ -1,18 +1,19 @@
-# testing out basic pygame stuff
-import pygame
-import os
-import ptext
+# importing necessary packages
+import pygame  # use pip install
+import os  # downloading and sizing images
+import ptext  # public github package to facilitate more complex/extensive text than supported by pygame
+#  allows for blocks of text, alignment, bounds, and easy color/highlight
 
 pygame.init()
-width, height = 1200, 900
-win = pygame.display.set_mode((width, height))
-pygame.display.set_caption('Decisions, Decisions, Decisions')
+width, height = 1200, 900  # size parameters for pygame window
+win = pygame.display.set_mode((width, height))  # set display window to size parameters
+pygame.display.set_caption('Decisions, Decisions, Decisions')  # title pygame window
 
 # initializing variables
-white = (255, 255, 255)
+white = (255, 255, 255)  # colors
 brown = (100, 50, 10)
-VEL = 5
-FPS = 60
+VEL = 5  # movement speed (5 pixels/key press) of bear
+FPS = 60  # standardized frames per sec
 
 # SOUND CODE
 pygame.mixer.init()
@@ -22,8 +23,8 @@ tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 
 # images
-bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))
-bear = pygame.transform.scale(bear_img, (184, 178))
+bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))  # load image as pygame surface
+bear = pygame.transform.scale(bear_img, (184, 178))  # resize and define surface
 a_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option A.png')), (80, 80))
 b_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option B.png')), (80, 80))
 main_green = pygame.image.load(os.path.join('assets', 'main_green.jpg'))
@@ -40,7 +41,7 @@ classroom = pygame.image.load(os.path.join('assets', 'classroom_pic.jpg'))
 classroom = pygame.transform.scale(classroom, (width, height))
 dorm_room = pygame.image.load(os.path.join('assets', 'dorm_room.jpg'))
 dorm_room = pygame.transform.scale(dorm_room, (width, height))
-inside_Rock = pygame.image.load(os.path.join('assets', 'inside_Rock.jpg'))
+inside_Rock = pygame.image.load(os.path.join('assets', 'Rock_stacks.jpg'))
 inside_Rock = pygame.transform.scale(inside_Rock, (width, height))
 outside_SciLi = pygame.image.load(os.path.join('assets', 'Outside_sci_li.jpg'))
 outside_SciLi = pygame.transform.scale(outside_SciLi, (width, height))
@@ -60,24 +61,29 @@ roller_rink = pygame.image.load(os.path.join('assets', 'roller_rink_pic.jpg'))
 roller_rink = pygame.transform.scale(roller_rink, (width, height))
 movies = pygame.image.load(os.path.join('assets', 'movie_backdrop.jpeg'))
 movies = pygame.transform.scale(movies, (width, height))
-jail = pygame.image.load(os.path.join('assets', 'jail_pic.jpeg'))
+jail = pygame.image.load(os.path.join('assets', 'pvd_courthouse.jpeg'))
 jail = pygame.transform.scale(jail, (width, height))
 the_office = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'doctors_office.jpeg')), (width, height))
 
+
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background):
-    win.blit(background, (0, 0))
-    win.blit(bear, (bear_rect.x, bear_rect.y))
+    # function to update display window, defining background, bear location (mobile), A/B response option location, and text
+    win.blit(background, (0, 0))  # attach/blit background image as surface onto entire window
+    win.blit(bear, (bear_rect.x, bear_rect.y))  # attach/blit image as surface onto rectangle
     win.blit(a_let, (a_position.x, a_position.y))
     win.blit(b_let, (b_position.x, b_position.y))
-    text_location = [bear_rect.x - 400, bear_rect.y - 100]
+    text_location = [bear_rect.x - 400, bear_rect.y - 100]  # define location of text relative to bear
+    # ptext.draw function comes from ptext module, command structure given in ptext.py
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center", width=400, color=brown,
-               background=white)
-    ptext.draw(string_a, (a_position.x-120, a_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
-    ptext.draw(string_b, (b_position.x-120, b_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
-    pygame.display.flip()
+               background=white)  # create variable string_bear, defining text "spoken" by bear
+    ptext.draw(string_a, (a_position.x-120, a_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)  # response A text
+    ptext.draw(string_b, (b_position.x-120, b_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)  # response B text
+    pygame.display.flip()  # flip to display loaded information
 
 
 def bear_movement(keys_pressed, bear_rect):
+    # function allowing for movement of bear with up/down/left/right keys by altering bear_rect by velocity (VEL)
+    # bounds set as display window size, allows for simultaneous movement in all directions
     if keys_pressed[pygame.K_LEFT] and bear_rect.x - VEL > 0:
         bear_rect.x -= VEL
     if keys_pressed[pygame.K_RIGHT] and bear_rect.x + bear_rect[2] + VEL < width:
@@ -89,13 +95,14 @@ def bear_movement(keys_pressed, bear_rect):
 
 
 def main():
-    bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
-    a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
-    b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
+    # main game function
+    bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)  # initialize bear rect
+    a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)  # initialize position of A response selection
+    b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)  # initialize position of B response selection
     string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
     string_a = ''
     string_b = ''
-    background = main_green_snake
+    background = main_green
     descriptive = 0
     normative = 0
     clock = pygame.time.Clock()
@@ -135,7 +142,7 @@ def main():
 
         },
 
-        'F1':{
+        'F1': {
             #drop the class
             1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from dropping the class, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you' 'G1'],
             #keep the class
@@ -152,35 +159,36 @@ def main():
 
         'H1': {
             #Both of these paths are the same
-            1 and 2: [dorm_room, 'Change the location to your room', 'Stick to your friends room; the more people, the better!', 'Now, you feel more energized, so you decide to hang with some friends. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'I1'],
+            1: [dorm_room, 'Change the location to your room', 'Stick to your friends room; the more people, the better!', 'Now, you feel more energized, so you decide to hang with some friends. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'I1'],
+            2: [dorm_room, 'Change the location to your room', 'Stick to your friends room; the more people, the better!', 'Now, you feel more energized, so you decide to hang with some friends. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'I1']
         },
 
         #This is an ending
         'I1': {
             #Your room
-            1: [dorm_room, '', '', 'You have a great time with your friends and a great rest of the semester! Some more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
+            1: [dorm_room, '', '', 'You have a great time with your friends and a great rest of the semester! Now, press the spacebar to continue', ''],
             #Friend's room
-            2: [VDub, '', '', 'On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            2: [VDub, '', '', 'On the way to Emwool, you cut through the VDub, and you accidentally get cooked into the meatloaf. So sad! Now, press the spacebar to continue', '']
 
         },
         #This is an ending
         'J1': {
             #wrap
-            1: [Thayer_street, '', '', 'Unfortunately, the wrap you got was poisoned. So sad! But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
+            1: [Thayer_street, '', '', 'Unfortunately, the wrap you got was poisoned. So sad! Now, press the spacebar to continue', ''],
             #fried chicken
-            2: [Thayer_street, '', '', 'Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            2: [Thayer_street, '', '', 'Unfortunately, on the way to the fried chicken place, Christmas Crane falls on you and crushes you. So sad! Now, press the spacebar to continue', '']
         },
 
         'K1': {
             #Sci Li
-            1: [SciLi_mice, '', '', 'You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
+            1: [SciLi_mice, '', '', 'You go to the Scili are get attacked by the army of mice hiding in the stacks. So sad! Now, press the spacebar to continue', ''],
             # Rock
             2: [inside_Rock, 'The $15/hour internship with the unknown acceptance rate', 'The $13/hour internship with the 40% acceptance rate','Once at the Rock, you open BrownConnect and find one internship that says it has a 40% acceptance rate and pays $13 an hour, 40 hours per week. You find a second internship that pays $15 an hour, 40 hours per week. You do not know the acceptance rate of this internship. Both applications are due tonight, so you only have time to apply to one. Which internship do you choose?', 'L1']
 
         },
 
         'L1': {
-            1 and 2: [Blueno, '', '', 'When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, though, let us tell you what kind of decision-maker you are! press the spacebar to continue', '']
+            1 and 2: [Blueno, '', '', 'When you finish the application, you head back to your room. As you pass Blueno, he comes alive and wraps you in his arms to be forever held captive. Cute! Before you hang with Blueno forever, press the spacebar to continue', '']
         },
 
         'D2': {
@@ -208,48 +216,48 @@ def main():
             2: [inside_Rock, 'Change location to your room', 'Stick to your friends room; the more the merrier!', 'You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'Q2']
         },
         'J2': {
-            1: [roller_rink, '', '', 'You fall and somebody skates over your face, mangling it horribly, so you drop out of school and join the circus. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [movies, '', '', 'The movie inspires you and helps you discover your true purpose in life - you dropout of school to become a country music star. Plus, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [roller_rink, '', '', 'You fall and somebody skates over your face, mangling it horribly, so you drop out of school and join the circus. Now, press the spacebar to continue', ''],
+            2: [movies, '', '', 'The movie inspires you and helps you discover your true purpose in life - you dropout of school to become a country music star. Now, press the spacebar to continue', '']
         },
         'K2': {
-            1: [Starbucks, '', '', 'You drop out of school and become an ambassador for self control and overcoming addiction. Your success is overwhelming. Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [Starbucks, '', '', 'You have a caffeine overload and pass out in Starbucks. Brown ships you back to your home state/country because they do not condone drug addiction on campus! But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [Starbucks, '', '', 'You drop out of school and become an ambassador for self control and overcoming addiction. Your success is overwhelming. Now, press the spacebar to continue', ''],
+            2: [Starbucks, '', '', 'You have a caffeine overload and pass out in Starbucks. Brown ships you back to your home state/country because they do not condone drug addiction on campus! Now, press the spacebar to continue', '']
         },
         'L2': {
-            1: [SciLi_mice, '', '', 'The mice of SciLi have made you their king/queen! You decide you no longer have use for education. More good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
+            1: [SciLi_mice, '', '', 'The mice of SciLi have made you their king/queen! You decide you no longer have use for education. Now, press the spacebar to continue', ''],
             2: [inside_Rock, 'Change the location to you room', 'Stick to your friends room; the more people the better!', 'After a bit of studying at the Rock you decide you deserve to hang out with some friends. You and your friends decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'R2']
         },
         'M2': {
-            1: [dorm_room, '', '', 'A blizzard hits PVD and you have no pasta so you starve to death in your dorm. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [Andrews, '', '', 'You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [dorm_room, '', '', 'A blizzard hits PVD and you have no pasta so you starve to death in your dorm. Now, press the spacebar to continue', ''],
+            2: [Andrews, '', '', 'You have a severe lactose intolerance reaction to the pasta and explode from the gas build up within you. Now, press the spacebar to continue', '']
         },
         'N2': {
-            1: [classroom, '', '', 'Low on energy, you fall asleep in class and your professor despises you forever. They destroy your academic reputation and you end up dropping out. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [classroom, '', '', 'Feeling energized you start the semester off strong! You are sure to make dean’s list. Plus, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [classroom, '', '', 'Low on energy, you fall asleep in class and your professor despises you forever. They destroy your academic reputation and you end up dropping out. Now, press the spacebar to continue', ''],
+            2: [classroom, '', '', 'Feeling energized you start the semester off strong! You are sure to make dean’s list. Now, press the spacebar to continue', '']
         },
         'O2': {
-            1: [Beyonce_concert, '', '', 'You lose a nipple to frostbite but you go see Beyonce in concert with the money you saved at the Bookstore! Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [Bookstore, '', '', 'The shuttle runs you over as you leave the bookstore! You can’t afford the surgery you need because you maxed your card in the bookstore and Health services can’t afford to pay fot it because of COVID cutbacks :( But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [Beyonce_concert, '', '', 'You lose a nipple to frostbite but you go see Beyonce in concert with the money you saved at the Bookstore! Now, press the spacebar to continue', ''],
+            2: [Bookstore, '', '', 'The shuttle runs you over as you leave the bookstore! You can’t afford the surgery you need because you maxed your card in the bookstore and Health services can’t afford to pay fot it because of COVID cutbacks :( Now, press the spacebar to continue', '']
         },
         'P2': {
             1: [SciLi_mice, 'froyo', 'nap', 'You make friends with the mice and get a week`s worth of work done! You decide to celebrate. Will it be froyo or a well deserved nap?', 'S2'],
             2: [inside_Rock, 'Change the location to your room', 'Stick to your friends room; the more people the better!', 'You see your friends at the Rock and decide to hang out later. You guys decide to hang out in Emwool. But, your friend gets a text from her roommate saying her roommate is having some friends over. She suggests you all hang out in your room instead Do you decide to:', 'T2']
         },
         'Q2': {
-            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         },
         'R2': {
-            1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [main_green_snake, '', '', 'On the way to Emwool you trip over someone’s illegal pet snake and it eats you. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. Now, press the spacebar to continue', ''],
+            2: [main_green_snake, '', '', 'On the way to Emwool you trip over someone’s illegal pet snake and it eats you. Now, press the spacebar to continue', '']
         },
         'S2': {
-            1: [Froyo_store, '', '', 'BRAIN FREEZE!! You contract a rare condition called super serious brain freeze and are no longer able to pursue higher level education. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [dorm_room, '', '', 'You wake up with an idea for a startup company and become a millionaire by senior year. Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [Froyo_store, '', '', 'BRAIN FREEZE!! You contract a rare condition called super serious brain freeze and are no longer able to pursue higher level education. Now, press the spacebar to continue', ''],
+            2: [dorm_room, '', '', 'You wake up with an idea for a startup company and become a millionaire by senior year. Now, press the spacebar to continue', '']
         },
         'T2': {
-            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         }
 
     }
@@ -262,7 +270,7 @@ def main():
                 pygame.quit()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 if current_state == 0:
-                    background = main_green_snake
+                    background = main_green
                     scenario = 'A'
                     string_bear = 'Right before your flight to Brown for your first semester of university you had a huge fight with your bestfriend since 3rd grade - they said they dont wanna be long distance friends (?). You are pursuing a double major, so it would be wise of you to start the heavy lifting from early. However, you are heartbroken and unsure of your ability to offer your best work. Do you'
                     string_a = 'Take harder courses - you are a soldier!'
@@ -307,7 +315,10 @@ def main():
         bear_movement(keys_pressed, bear_rect)
         if should_update:
             bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
-            background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
+            try:
+                background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
+            except KeyError:
+                game_on = False
         draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background)
         pygame.display.flip()
 

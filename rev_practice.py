@@ -1,4 +1,4 @@
-# testing out basic pygame stuff
+ # testing out basic pygame stuff
 import pygame
 import os
 import ptext
@@ -14,8 +14,8 @@ brown = (100, 50, 10)
 VEL = 5
 FPS = 60
 
-font = pygame.font.SysFont('georgia.ttf', 24)
-test_font = font.render('Hello', True, white)
+#font = pygame.font.SysFont('georgia.ttf', 24)
+#test_font = font.render('Hello', True, white)
 
 # SOUND CODE
 pygame.mixer.init()
@@ -63,7 +63,7 @@ roller_rink = pygame.image.load(os.path.join('assets', 'roller_rink_pic.jpg'))
 roller_rink = pygame.transform.scale(roller_rink, (width, height))
 movies = pygame.image.load(os.path.join('assets', 'movie_backdrop.jpeg'))
 movies = pygame.transform.scale(movies, (width, height))
-jail = pygame.image.load(os.path.join('assets', 'jail_pic.jpeg'))
+jail = pygame.image.load(os.path.join('assets', 'pvd_courthouse.jpeg'))
 jail = pygame.transform.scale(jail, (width, height))
 the_office = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'doctors_office.jpeg')), (width, height))
 
@@ -240,7 +240,7 @@ def main():
         },
         'Q2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
         },
         'R2': {
             1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
@@ -252,7 +252,7 @@ def main():
         },
         'T2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
         }
 
     }
@@ -273,10 +273,8 @@ def main():
                     # should_update = False
                     game_on = True
                     current_state += 1
-                     # game_over = False somewhere in the dictionary
                 elif current_state == 1: # and game_over = True
                     background = the_office
-                    # remove rectangles
                     a_position.x, a_position.y = 0, height
                     b_position.x, b_position.y = 0, height
                     game_on = False
@@ -306,12 +304,15 @@ def main():
                 descriptive += 1
             else:
                 should_update = False
-
+        # KeyError: ''
         keys_pressed = pygame.key.get_pressed()
         bear_movement(keys_pressed, bear_rect)
         if should_update:
             bear_rect = pygame.Rect(1000, 200, 184, 178)
-            background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
+            try:
+                background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
+            except KeyError:
+                game_on = False
         draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background)
         pygame.display.flip()
 
