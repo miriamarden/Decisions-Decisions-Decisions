@@ -16,12 +16,11 @@ FPS = 60
 
 # SOUND CODE
 pygame.mixer.init()
-horn_fail_sound = pygame.mixer.Sound(os.path.join('sound', 'horn_fail_lose.wav'))
 yay_sound = pygame.mixer.Sound(os.path.join('sound', 'Yay_sound.wav'))
 tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 bear_song = pygame.mixer.Sound(os.path.join('sound', 'bear_song_clip.wav'))
 
-# images
+#Images
 bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))
 bear = pygame.transform.scale(bear_img, (184, 178))
 a_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option A.png')), (80, 80))
