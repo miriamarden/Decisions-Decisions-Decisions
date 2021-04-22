@@ -17,7 +17,6 @@ FPS = 60  # standardized frames per sec
 
 # SOUND CODE
 pygame.mixer.init()
-horn_fail_sound = pygame.mixer.Sound(os.path.join('sound', 'horn_fail_lose.wav'))
 yay_sound = pygame.mixer.Sound(os.path.join('sound', 'Yay_sound.wav'))
 tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
@@ -61,8 +60,6 @@ roller_rink = pygame.image.load(os.path.join('assets', 'roller_rink_pic.jpg'))
 roller_rink = pygame.transform.scale(roller_rink, (width, height))
 movies = pygame.image.load(os.path.join('assets', 'movie_backdrop.jpeg'))
 movies = pygame.transform.scale(movies, (width, height))
-jail = pygame.image.load(os.path.join('assets', 'pvd_courthouse.jpeg'))
-jail = pygame.transform.scale(jail, (width, height))
 the_office = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'doctors_office.jpeg')), (width, height))
 
 
@@ -102,6 +99,7 @@ def main():
     string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
     string_a = ''
     string_b = ''
+    pygame.mixer.Sound.play(bear_song)
     background = main_green
     descriptive = 0
     normative = 0
@@ -125,18 +123,18 @@ def main():
             2: [Andrews, 'yes', 'no', 'Lunch it is! You are not on meal plan this year, but you are really hungry and you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E1']
         },
         'C': {
-            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'D2'],
+            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'Honorable choice. You venture into the Brown bookstore with a flexible budget of $60 looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:', 'D2'],
             2: [Andrews, 'yes', 'no', 'Good choice! You are not on meal plan this year, but you are craving a pasta bowl from Andrews. You pay $8.75 in cash for your pasta bowl and sit down, all excited to eat it. It looks like you got the last pasta bowl, though, so someone approaches you saying they REALLY wanted a pasta bowl too.They offer to pay you $9.75 for your pasta bowl - $1.00 more than you initially paid. Do you accept their offer?', 'E2']
         },
         'D1': {
             #take the class for a grade
             1: [classroom, 'drop', 'keep', 'Weeks later, the S/NC deadline has passed, but you are struggling in the class. You do not enjoy the material, and you realize you probably do not even need to be in this class. You can drop the class with no fee, but you have already invested 75+ hours of work into the class (5 weeks of work), and you spent $65 on the textbook. Do you drop the class or keep the class?', 'F1'],
             #take the class S/NC
-            2: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from taking the class S/NC, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'G1']
+            2: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from taking the class S/NC, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:', 'G1']
         },
         'E1': {
             #yes sell pasta
-            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'You are feeling richer now, so you decide to treat yourself to a Brown hoodie. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you', 'G1'],
+            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'You are feeling richer now, so you decide to treat yourself to a Brown hoodie. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:', 'G1'],
             #no sell pasta
             2: [Andrews, 'nap', 'coffee', 'After all that yummy pasta, you fall into a food coma. You really want some coffee, but you made a goal to only buy coffee a maximum of twice a week. You followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week, or do you energize yourself with a nap instead?', 'H1']
 
@@ -144,7 +142,7 @@ def main():
 
         'F1': {
             #drop the class
-            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from dropping the class, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you' 'G1'],
+            1: [Bookstore, 'Leave the store without buying anything', 'Buy the $80 hoodie', 'With all the time you saved from dropping the class, you decide to do some shopping. You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of the new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:' 'G1'],
             #keep the class
             2: [classroom, 'nap', 'coffee', 'If you are going to make it through this class, you will need coffee. But, you made a goal to only buy coffee a maximum of twice a week. You followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week, or do you energize yourself with a nap instead?', 'H1']
         },
@@ -209,7 +207,7 @@ def main():
         },
         'H2': {
             1: [Starbucks, 'no', 'yes', 'Applying for internships is tiring. Coffee break? You made a goal to only buy coffee a maximum of twice a week. You followed your goal perfectly last week, but you already bought coffee twice this week. Do you decide to just go an extra time this week?', 'N2'],
-            2: [Bookstore, 'Leave the bookstore without buying anything', 'Buy the $80 hoodie', 'You’re about to be swimming in green so you need some new drip - preferably some threads that rep your school! You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you...', 'O2']
+            2: [Bookstore, 'Leave the bookstore without buying anything', 'Buy the $80 hoodie', 'You’re about to be swimming in green so you need some new drip - preferably some threads that rep your school! You venture into the Brown bookstore with a flexible budget of $60, looking for some merch. At the front of the bookstore is a grand display of Browns new line of hoodies. Each hoodie costs $100. You search in the back of the store for other hoodie options and find a cute hoodie from last year for $80. Do you:', 'O2']
         },
         'I2': {
             1: [outside_SciLi, 'SciLi', 'Rock', 'You’re feeling a little academically insecure so you decide to go to the library and beat the books. You’re on your way to a late night grind in the stacks at the SciLi. You run into your friend outside of Caswell and talk for a bit. You both end up complaining about how dusty and depressing some of the scili is. They tell you that the last time they were in the stacks, someone there saw a mouse. Gross. But you’re already so close to the SciLi. Do you decide to go to the Sci Li since you’re already so close and all stacks are rightfully terrible, or do you go to the Rock instead?', 'P2'],
@@ -288,6 +286,7 @@ def main():
                     string_bear = 'YAY! You have finished the game! You worked so hard, so please have a seat on the couch ... Turns out this was secretly a test of your decision-making techniques all along. Sorry for not telling you before. Press the spacebar to continue.'
                     current_state += 1
                 elif current_state == 2:
+                    pygame.mixer.Sound.play(yay_sound)
                     if descriptive > normative:
                         string_bear = 'A majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choices, you tended to follow decision-making fallacies and theories used to describe our weird choice. Congrats; you are as illogical as the rest of us! Now, press the space bar again.'
                     elif normative > descriptive:
