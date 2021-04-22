@@ -99,19 +99,25 @@ def main():
     a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)  # initialize position of A response selection
     b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)  # initialize position of B response selection
     string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
-    string_a = ''
-    string_b = ''
-    pygame.mixer.Sound.play(bear_song)
-    background = main_green
-    descriptive = 0
-    normative = 0
-    clock = pygame.time.Clock()
-    run = True
-    game_on = False
-    current_state = 0
-    should_update = False
+    # initialize string_bear with welcome message and instructions
+    string_a = ''  # initialize a response as blank
+    string_b = ''  # initialize b response as blank
+    pygame.mixer.Sound.play(bear_song)  # add brown song audio for intro window
+    background = main_green  # set first background as main green
+    descriptive = 0  # initialize descriptive option selection counter
+    normative = 0  # initialize normative option selection counter
+    clock = pygame.time.Clock()  # clock function later used to standardize FPS across computer types/speeds
+    run = True  # boolean for while loop containing actual game code
+    game_on = False  # boolean for differentiating intro, game play, and conclusion sections
+    current_state = 0  # initialize counter used to control window display
+    should_update = False  # boolean variable used in game play section
 
     gameplay_scenarios = {
+        # gameplay scenarios is a dictionary containing all of the game play scenarios. The first key is a script that corresponds to a scenario id. Each scenario id
+        # corresponds to another dictionary where the key is 1 or 2, representing choice A or B in our game. The numerical keys index a list containing five elements:
+        # the background, string for response A, string for response B, string for question/narration, and reference to the next scenario id following selection of the
+        # given choice. This nesting of scenario ids, allows the choose your own adventure pathways to work, with the first 4 inputs corresponding to display updates
+        # to the window, and the fifth the key for the next questions information.
         'A': {
             #hard semester
             1: [classroom, 'class', 'lunch', 'It is the first day of classes, and you just shopped three classes in a row. Do you take a break for lunch or shop another class?', 'B'],
@@ -309,67 +315,67 @@ def main():
     }
 
     while run:
-        clock.tick(FPS)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-                pygame.quit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+        clock.tick(FPS)  # standardize frame refresh rate for uniform gameplay across local computers
+        for event in pygame.event.get():  # get events for the pygame event queue stored in variable event
+            if event.type == pygame.QUIT:  # for quit events
+                run = False  # exit game loop
+                pygame.quit()  # close pygame window
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:  # when space bar is pressed
                 if current_state == 0:
-                    background = main_green
-                    pygame.mixer.Sound.stop(bear_song)
-                    scenario = 'A'
+                    background = main_green  # background set to main green
+                    pygame.mixer.Sound.stop(bear_song)  # play song
+                    scenario = 'A'  # identify first scenario id
                     string_bear = 'Right before your flight to Brown for your first semester of university you had a huge fight with your bestfriend since 3rd grade - they said they dont wanna be long distance friends (?). You are pursuing a double major, so it would be wise of you to start the heavy lifting from early. However, you are heartbroken and unsure of your ability to offer your best work. Do you'
+                    # first question
                     string_a = 'Take harder courses - you are a soldier!'
                     string_b = 'Take mostly easy courses to prevent yourself from having a mental breakdown mid semester'
-                    # should_update = False
-                    game_on = True
-                    current_state += 1
-                     # game_over = False somewhere in the dictionary
-                elif current_state == 1: # and game_over = True
-                    background = the_office
-                    pygame.mixer.Sound.play(tada_sound)
-                    a_position.x, a_position.y = 0, height
+                    game_on = True  # move to game play loop, which references dictionary to move through questions and responses
+                    current_state += 1  # record space bar press event
+                elif current_state == 1:  # when space bar pressed again, user is prompted to in all final events in game play section
+                    background = the_office  # set background to office
+                    pygame.mixer.Sound.play(tada_sound)  # play sound
+                    a_position.x, a_position.y = 0, height  # move letters off screen
                     b_position.x, b_position.y = 0, height
-                    game_on = False
+                    game_on = False  # exit game play section, inactivate collide rect as response mechanism
                     string_bear = 'YAY! You have finished the game! You worked so hard, so please have a seat on the couch ... Turns out this was secretly a test of your decision-making techniques all along. Sorry for not telling you before. Press the spacebar to continue.'
-                    current_state += 1
+                    current_state += 1  # record space bar press event
                 elif current_state == 2:
-                    pygame.mixer.Sound.play(yay_sound)
-                    if descriptive > normative:
-                        string_bear = 'A majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choices, you tended to follow decision-making fallacies and theories used to describe our weird choice. Congrats; you are as illogical as the rest of us! Now, press the space bar again.'
-                    elif normative > descriptive:
+                    pygame.mixer.Sound.play(yay_sound)  # play sound
+                    if descriptive > normative:  # if user made more descriptive than normative decisions
+                        string_bear = 'A majority of the decisions you made adhered to descriptive theories. This means that rather than making the rational choices, you tended to follow decision-making fallacies and theories used to describe our weird choices. Congrats; you are as illogical as the rest of us! Now, press the space bar again.'
+                    elif normative > descriptive:  # if user made more normative than descriptive decisions
                         string_bear = 'A majority of the decisions you made were normative. This means that you tended to make the most rational choices, rather than adhering to descriptive theories used to describe frequent fallacies in our decision making. Idk what to tell you; make worse decisions more often, I guess. Now, press the space bar again.'
-                    else:
+                    else:  # if equal number of normative and descriptive
                         string_bear = 'You made the same number of descriptive and normative choices. This means you made an equal number of rational choices and choices that adhere to descriptive theories used to describe frequent fallacies in our decision making. I guess you are complex or whatever ... Now, press the space bar again.'
-                    current_state += 1
+                    current_state += 1  # record space bar press event
                 elif current_state == 3:
-                    string_bear = 'Thank you for playing! press space bar to quit.'
-                    current_state += 1
+                    string_bear = 'Thank you for playing! press space bar to quit.'  # goodbye message
+                    current_state += 1  # record space key press
                 elif current_state == 4:
-                    run = False
-                pygame.event.clear()
+                    run = False  # quit pygame window, end game
+                pygame.event.clear()  # clear event queue
 
-        if game_on:
-            if a_position.colliderect(bear_rect):
-                option, should_update = 1, True
-                normative += 1
-            elif b_position.colliderect(bear_rect):
-                option, should_update = 2, True
-                descriptive += 1
-            else:
-                should_update = False
-        keys_pressed = pygame.key.get_pressed()
-        bear_movement(keys_pressed, bear_rect)
-        if should_update:
-            bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
-            try:
-                background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]
-            except KeyError:
+        if game_on:  # loop for game play section
+            if a_position.colliderect(bear_rect):  # if user moves bear to response A button
+                option, should_update = 1, True  # sets key to 1 within given scenario id, conditional true that window needs to be updated
+                normative += 1  # option A is normative
+            elif b_position.colliderect(bear_rect):  # if user moves bear to response B button
+                option, should_update = 2, True  # sets key to 2 within given scenario id, conditional true that window needs to be updated
+                descriptive += 1  # option B is descriptive
+            else:  # if bear not touching options
+                should_update = False  # no change to window information
+        keys_pressed = pygame.key.get_pressed()  # pygame command records keys pressed
+        bear_movement(keys_pressed, bear_rect)  # updates bears position based on keys pressed
+        if should_update:  # conditional meaning user selected an A/B choice
+            bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)  # reset bear location
+            try:  # check if last scenario in pathway
+                background, string_a, string_b, string_bear, scenario = gameplay_scenarios[scenario][option]  # updates display variable according to A/B choice (option)
+            # if last scenario there is no corresponding scenario id, so if user moves bear to A/B response rather than following space bar prompt, error occurs
+            except KeyError:   # if this happens break out of game play loop and wait for user to press space bar
                 game_on = False
-        draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background)
-        pygame.display.flip()
+        draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background)  # call function to display window
+        pygame.display.flip()  # display window
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # any variables referenced in outerscope/ functions outside of main function, should refer to main function for variable initializing/value
     main()
