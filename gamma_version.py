@@ -1,18 +1,19 @@
-# testing out basic pygame stuff
-import pygame
-import os
-import ptext
+# importing necessary packages
+import pygame  # use pip install
+import os  # downloading and sizing images
+import ptext  # public github package to facilitate more complex/extensive text than supported by pygame
+#  allows for blocks of text, alignment, bounds, and easy color/highlight
 
 pygame.init()
-width, height = 1200, 900
-win = pygame.display.set_mode((width, height))
-pygame.display.set_caption('Decisions, Decisions, Decisions')
+width, height = 1200, 900  # size parameters for pygame window
+win = pygame.display.set_mode((width, height))  # set display window to size parameters
+pygame.display.set_caption('Decisions, Decisions, Decisions')  # title pygame window
 
 # initializing variables
-white = (255, 255, 255)
+white = (255, 255, 255)  # colors
 brown = (100, 50, 10)
-VEL = 5
-FPS = 60
+VEL = 5  # movement speed (5 pixels/key press) of bear
+FPS = 60  # standardized frames per sec
 
 # SOUND CODE
 pygame.mixer.init()
@@ -22,8 +23,8 @@ tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
 
 # images
-bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))
-bear = pygame.transform.scale(bear_img, (184, 178))
+bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))  # load image as pygame surface
+bear = pygame.transform.scale(bear_img, (184, 178))  # resize and define surface
 a_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option A.png')), (80, 80))
 b_let = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'Option B.png')), (80, 80))
 main_green = pygame.image.load(os.path.join('assets', 'main_green.jpg'))
@@ -60,24 +61,29 @@ roller_rink = pygame.image.load(os.path.join('assets', 'roller_rink_pic.jpg'))
 roller_rink = pygame.transform.scale(roller_rink, (width, height))
 movies = pygame.image.load(os.path.join('assets', 'movie_backdrop.jpeg'))
 movies = pygame.transform.scale(movies, (width, height))
-jail = pygame.image.load(os.path.join('assets', 'jail_pic.jpeg'))
+jail = pygame.image.load(os.path.join('assets', 'pvd_courthouse.jpeg'))
 jail = pygame.transform.scale(jail, (width, height))
 the_office = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'doctors_office.jpeg')), (width, height))
 
+
 def draw_window(bear_rect, a_position, b_position, a_let, b_let, bear, string_bear, string_a, string_b, background):
-    win.blit(background, (0, 0))
-    win.blit(bear, (bear_rect.x, bear_rect.y))
+    # function to update display window, defining background, bear location (mobile), A/B response option location, and text
+    win.blit(background, (0, 0))  # attach/blit background image as surface onto entire window
+    win.blit(bear, (bear_rect.x, bear_rect.y))  # attach/blit image as surface onto rectangle
     win.blit(a_let, (a_position.x, a_position.y))
     win.blit(b_let, (b_position.x, b_position.y))
-    text_location = [bear_rect.x - 400, bear_rect.y - 100]
+    text_location = [bear_rect.x - 400, bear_rect.y - 100]  # define location of text relative to bear
+    # ptext.draw function comes from ptext module, command structure given in ptext.py
     ptext.draw(string_bear, (text_location[0], text_location[1]), align="center", width=400, color=brown,
-               background=white)
-    ptext.draw(string_a, (a_position.x-120, a_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
-    ptext.draw(string_b, (b_position.x-120, b_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)
-    pygame.display.flip()
+               background=white)  # create variable string_bear, defining text "spoken" by bear
+    ptext.draw(string_a, (a_position.x-120, a_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)  # response A text
+    ptext.draw(string_b, (b_position.x-120, b_position.y - 120), fontsize=40, align="center", width=350, color=brown, background=white)  # response B text
+    pygame.display.flip()  # flip to display loaded information
 
 
 def bear_movement(keys_pressed, bear_rect):
+    # function allowing for movement of bear with up/down/left/right keys by altering bear_rect by velocity (VEL)
+    # bounds set as display window size, allows for simultaneous movement in all directions
     if keys_pressed[pygame.K_LEFT] and bear_rect.x - VEL > 0:
         bear_rect.x -= VEL
     if keys_pressed[pygame.K_RIGHT] and bear_rect.x + bear_rect[2] + VEL < width:
@@ -89,9 +95,10 @@ def bear_movement(keys_pressed, bear_rect):
 
 
 def main():
-    bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)
-    a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)
-    b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)
+    # main game function
+    bear_rect = pygame.Rect(width*.66 - 40, height/2 - 80, 184, 178)  # initialize bear rect
+    a_position = pygame.Rect((width * 0.33)-40, height * 0.75, 80, 80)  # initialize position of A response selection
+    b_position = pygame.Rect((width * 0.66) - 40, height * 0.75, 80, 80)  # initialize position of B response selection
     string_bear = 'Welcome to our game! I will be your guide on a little choose-your-own adventure game, Brown style. I will ask you questions with A/B responses. To make a selection, use the arrows on your keyboard to move me to the letter options displayed on screen. Let"s get started! Press the spacebar to continue.'
     string_a = ''
     string_b = ''
@@ -238,7 +245,7 @@ def main():
         },
         'Q2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         },
         'R2': {
             1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. Now, press the spacebar to continue', ''],
@@ -250,7 +257,7 @@ def main():
         },
         'T2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         }
 
     }

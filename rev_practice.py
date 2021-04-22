@@ -1,4 +1,4 @@
-# testing out basic pygame stuff
+ # testing out basic pygame stuff
 import pygame
 import os
 import ptext
@@ -63,7 +63,7 @@ roller_rink = pygame.image.load(os.path.join('assets', 'roller_rink_pic.jpg'))
 roller_rink = pygame.transform.scale(roller_rink, (width, height))
 movies = pygame.image.load(os.path.join('assets', 'movie_backdrop.jpeg'))
 movies = pygame.transform.scale(movies, (width, height))
-jail = pygame.image.load(os.path.join('assets', 'jail_pic.jpeg'))
+jail = pygame.image.load(os.path.join('assets', 'pvd_courthouse.jpeg'))
 jail = pygame.transform.scale(jail, (width, height))
 the_office = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'doctors_office.jpeg')), (width, height))
 
@@ -240,7 +240,7 @@ def main():
         },
         'Q2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
         },
         'R2': {
             1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', ''],
@@ -252,7 +252,7 @@ def main():
         },
         'T2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Plus, more good news: we found out what kind of decision-maker you are! press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
+            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. But, on the bright side, we found out what kind of decision-maker you are! press the spacebar to continue', '']
         }
 
     }
