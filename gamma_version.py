@@ -19,7 +19,7 @@ FPS = 60  # standardized frames per sec
 pygame.mixer.init()
 yay_sound = pygame.mixer.Sound(os.path.join('sound', 'Yay_sound.wav'))
 tada_sound = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
-bear_song = pygame.mixer.Sound(os.path.join('sound', 'tada_sound.wav'))
+bear_song = pygame.mixer.Sound(os.path.join('sound', 'bear_song_clip.wav'))
 
 # images
 bear_img = pygame.image.load(os.path.join('assets', 'bear_red.png'))  # load image as pygame surface
@@ -60,6 +60,8 @@ roller_rink = pygame.image.load(os.path.join('assets', 'roller_rink_pic.jpg'))
 roller_rink = pygame.transform.scale(roller_rink, (width, height))
 movies = pygame.image.load(os.path.join('assets', 'movie_backdrop.jpeg'))
 movies = pygame.transform.scale(movies, (width, height))
+courthouse = pygame.image.load(os.path.join('assets', 'pvd_courthouse.jpeg'))
+courthouse = pygame.transform.scale(courthouse, (width, height))
 the_office = pygame.transform.scale(pygame.image.load(os.path.join('assets', 'doctors_office.jpeg')), (width, height))
 
 
@@ -243,7 +245,7 @@ def main():
         },
         'Q2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
+            2: [courthouse, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         },
         'R2': {
             1: [dorm_room, '', '', 'You and your friends laugh yourselves into a semester long coma - literally. Now, press the spacebar to continue', ''],
@@ -255,7 +257,7 @@ def main():
         },
         'T2': {
             1: [dorm_room, '', '', 'You and your friends bond in a special way and become life long companions forever :D Now, press the spacebar to continue', ''],
-            2: [jail, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
+            2: [courthouse, '', '', 'One of your ditsy friends gets lost on the way and you are convicted of their murder. To the courthouse! You spend the rest of your life in PVD jail. Now, press the spacebar to continue', '']
         }
 
     }
@@ -269,6 +271,7 @@ def main():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 if current_state == 0:
                     background = main_green
+                    pygame.mixer.Sound.stop(bear_song)
                     scenario = 'A'
                     string_bear = 'Right before your flight to Brown for your first semester of university you had a huge fight with your bestfriend since 3rd grade - they said they dont wanna be long distance friends (?). You are pursuing a double major, so it would be wise of you to start the heavy lifting from early. However, you are heartbroken and unsure of your ability to offer your best work. Do you'
                     string_a = 'Take harder courses - you are a soldier!'
@@ -279,7 +282,7 @@ def main():
                      # game_over = False somewhere in the dictionary
                 elif current_state == 1: # and game_over = True
                     background = the_office
-                    # remove rectangles
+                    pygame.mixer.Sound.play(tada_sound)
                     a_position.x, a_position.y = 0, height
                     b_position.x, b_position.y = 0, height
                     game_on = False
